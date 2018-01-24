@@ -125,7 +125,7 @@ initialise_user_simulated_ecology_params <- function(){
   simulated_ecology_params = list()
   
   #how many feature layers to generate
-  simulated_ecology_params$feature_num = 3
+  simulated_ecology_params$feature_num = 1
   
   # Number of pixels in (y, x) for the feature layes 
   simulated_ecology_params$ecology_size = c(500, 500)
@@ -152,17 +152,11 @@ initialise_user_simulated_ecology_params <- function(){
   # value to sample from
   simulated_ecology_params$max_initial_eco_val = 90
   
-  simulated_ecology_params$occupation_ratio = list(0.80, 0.5, 0.2) 
+  simulated_ecology_params$occupation_ratio = list(1) 
   # Mow much initial variation in pixels per land parcel (this is the width of
   # uniform dist) used to add noise to each pixel. Eg if the pixel has a vlaue
   # of 35, a new value will be sampled from between 35-45
   simulated_ecology_params$initial_eco_noise = 10
-  
-  # Defining multiple regions eg different states where different polcies can apply 
-  simulated_ecology_params$region_num_x = 1
-  
-  # Defining multiple regions eg different states where different rules can apply 
-  simulated_ecology_params$region_num_y = 1
   
   return(simulated_ecology_params)
 }
