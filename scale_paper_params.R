@@ -4,20 +4,20 @@ initialise_user_global_params <- function(){
   
   global_params$overwrite_default_params = TRUE
   
-  global_params$user_simulated_ecology_params_file = 'user_params/user_simulated_ecology_params.R'  # path to file
+  global_params$user_simulated_ecology_params_file = 'scale_paper_params.R'  # path to file
   
-  global_params$number_of_cores = 1
+  global_params$number_of_cores = 'all'
   # Where simulation outputs will be written
   global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
   
   # The number of realizations to run
-  global_params$realisation_num = 1
+  global_params$realisation_num = 50
   
   # Makes a single pdf at the end of the simulation showing the locatons of all offsets
-  global_params$write_offset_layer = TRUE
+  global_params$write_offset_layer = FALSE
   
   # Create an animation of the outputs
-  global_params$write_movie = TRUE
+  global_params$write_movie = FALSE
  
   return(global_params)
 }
@@ -37,7 +37,7 @@ initialise_user_simulation_params <- function(){
   simulation_params$features_to_use_in_offset_intervention = 1
   
   # The total number of parcels that will be developed
-  simulation_params$total_dev_num = 100
+  simulation_params$total_dev_num = 250
   
   # The time step at which development starts
   simulation_params$dev_start = 1
@@ -69,6 +69,7 @@ initialise_user_simulation_params <- function(){
 #     'protected_condition', 'current_condition', 'restored_condition')
   
   simulation_params$offset_action_params = list(c('net_gains', 'restore'), 
+											    c('restoration_gains', 'restore'),
                                                 c('avoided_condition_decline', 'maintain'))
 
   # This is the equivalent of offset_calc_type for the dev parcel. Options
@@ -87,34 +88,9 @@ initialise_user_simulation_params <- function(){
   # you are running on your own data you need to specify the weights file in
   # intialise_routines.R  (or put the files in simulation_inputs)
   simulation_params$development_selection_type = 'random'  
-  
-  # Whether to use banking. FALSE - means perform offsets simultaneously with development, TRUE -
-  # means perform offset banking prior to development according to offset bank
-  # parameters
-  simulation_params$use_offset_bank = c(FALSE)
-  
-  # The time at which the offset in the bank offsets are first are implemented and start acurring grains, 
-  simulation_params$offset_bank_start = 1 
-  
-  # The time at which no more offsets are added to the bank. The number of
-  # offsets per time step is determined as follows: First the mean number
-  # number per time step is determined, then sampling is done around this
-  # mean number using a normal distribution such that the total number of
-  # developments will always equal the total number (Note sd for this
-  # distribution is set in the code the currently isn't user settable)
-  simulation_params$offset_bank_end = 1 
-  
-  # THe number parcels to include in banking scheme. These are randomly selected.
-  simulation_params$offset_bank_num = 200 
-  
-  # Options are 'credit' or 'parcel_set'. 'credit' means there is accumulated
-  # gain that is subtracted as parcels are developed. 'parcel_set' one or more
-  # parcels in the bank are traded for one development site. If there is left
-  # over credit (and allow_developments_from_credit is set to TRUE) then this excess credit is used on subsequent developments
-  simulation_params$offset_bank_type = c('credit') #c('parcel_set', 'credit')     
-  
+
   # The time horizon in which the offset gains need to equal the devlopment impact
-  simulation_params$offset_time_horizon = list(15)
+  simulation_params$offset_time_horizon = list(15, 30)
   
   # Include illegal clearing in the calculating the contribution of avoided
   # losses to the impact of the development. 
@@ -123,12 +99,12 @@ initialise_user_simulation_params <- function(){
   # Include future legal developments in calculating contribution of avoided
   # losses to the impact of the offset. This increases the impact of the
   # offset (due to future losses that are avoided)
-  simulation_params$include_potential_developments_in_offset_calc = list(TRUE)
+  simulation_params$include_potential_developments_in_offset_calc = list(TRUE, FALSE)
   
   # Include future illegal developments in calculating contribution of avoided losses
   # to the impact of the offset. This increases the impact of the
   # offset (due to future losses that are avoided)
-  simulation_params$include_illegal_clearing_in_offset_calc = list(TRUE)
+  simulation_params$include_illegal_clearing_in_offset_calc = list(TRUE, FALSE)
   
   simulation_params$dev_counterfactual_adjustment = 'as_offset'
   # The development impacts is multiplied by this factor (irrespective of how
