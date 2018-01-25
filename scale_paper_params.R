@@ -177,8 +177,8 @@ initialise_user_plot_params <- function(){
   plot_params$landscape_col = 'black'
   plot_params$lwd_vec = c(3, 0.5)
   
-  plot_params$plot_subset_type = c('dev_calc_type') # 'offset_calc', 'time_horizon'
-  plot_params$plot_subset_param = c('future_condition')
+  plot_params$plot_subset_type = c('offset_time_horizon') # 'offset_calc', 'offset_time_horizon'
+  plot_params$plot_subset_param = c('15')
   
   plot_params$site_impact_lwd = 0.5
   plot_params$site_outcome_lwd_vec = c(0.5)
