@@ -76,7 +76,7 @@ initialise_user_simulation_params <- function(){
   # are: 'current_condition' - losses are calcuated relative to the value of
   # the site at the time of the intervention 
   # 'future_condition' - is the do nothing trjectory of the development site.
-  simulation_params$dev_calc_type = 'future_condition'    #'future_condition', 'current_condition' 
+  simulation_params$dev_calc_type = list('future_condition', 'current_condition')
   
   # Track accumulated credit from previous exchanges (eithger in current or
   # previous time step) and use them to allow developments to proceed if the
