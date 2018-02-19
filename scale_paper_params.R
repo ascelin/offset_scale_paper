@@ -4,6 +4,8 @@ initialise_user_global_params <- function(){
   
   global_params$overwrite_default_params = TRUE
   
+  global_params$scenario_subset = 19
+  
   global_params$user_simulated_ecology_params_file = 'scale_paper_params.R'  # path to file
   
   global_params$number_of_cores = 'all'
@@ -167,7 +169,7 @@ initialise_user_plot_params <- function(){
   plot_params$output_plot_folder = vector()
   plot_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
   plot_params$output_type = 'scenarios' # set to plot through 'features', 'scenarios' or 'site_sets'
-  plot_params$realisation_num = 1 # 'all' or number to plot
+  plot_params$realisation_num = 'all' # 'all' or number to plot
   plot_params$write_pdf = FALSE
   plot_params$sets_to_plot = 5 # example site to plot
   plot_params$scenario_vec = 'all' #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
