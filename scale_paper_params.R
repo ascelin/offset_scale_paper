@@ -9,8 +9,10 @@ initialise_user_global_params <- function(){
   global_params$user_simulated_ecology_params_file = 'scale_paper_params.R'  # path to file
   
   global_params$number_of_cores = 'all'
+
   # Where simulation outputs will be written
-  global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
+  #global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
+  global_params$simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/simulation_runs/00001/'
   
   # The number of realizations to run
   global_params$realisation_num = 50
@@ -57,8 +59,9 @@ initialise_user_simulation_params <- function(){
   # Stops the offset from delivering any further gains once it has acheived the gains required
   simulation_params$limit_offset_restoration = TRUE
   
-  # The probability per parcel of it being stochasticly cleared, every parcel gets set to this number - set to zero to turn off
-  simulation_params$stochastic_loss_prob = 0
+
+  # The probability per parcel of it being illegally cleared, every parcel gets set to this number - set to zero to turn off
+  simulation_params$stochastic_loss_prob = 0.002
   
   # Exclude parcels with less than this number of pixels.
   simulation_params$site_screen_size = 50
@@ -78,7 +81,7 @@ initialise_user_simulation_params <- function(){
   # are: 'current_condition' - losses are calcuated relative to the value of
   # the site at the time of the intervention 
   # 'future_condition' - is the do nothing trjectory of the development site.
-  simulation_params$dev_calc_type = 'future_condition'    #'future_condition', 'current_condition' 
+  simulation_params$dev_calc_type = list('future_condition', 'current_condition')
   
   # Track accumulated credit from previous exchanges (eithger in current or
   # previous time step) and use them to allow developments to proceed if the
@@ -171,7 +174,7 @@ initialise_user_plot_params <- function(){
   plot_params$output_type = 'scenarios' # set to plot through 'features', 'scenarios' or 'site_sets'
   plot_params$realisation_num = 'all' # 'all' or number to plot
   plot_params$write_pdf = FALSE
-  plot_params$sets_to_plot = 5 # example site to plot
+  plot_params$sets_to_plot = 50 # example site to plot
   plot_params$scenario_vec = 'all' #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
   plot_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
   plot_params$program_col_vec = c('darkgreen', 'red', 'black') 
@@ -179,8 +182,30 @@ initialise_user_plot_params <- function(){
   plot_params$landscape_col = 'black'
   plot_params$lwd_vec = c(3, 0.5)
   
-  plot_params$plot_subset_type = 'all' #c('offset_action_type') # 'offset_calc_type', 'offset_action_type', offset_time_horizon'
-  plot_params$plot_subset_param = 'all' #c('maintain') # 'net_gains', 'restore', 15
+  # Plot subset of the data. For example:
+  # plot_params$plot_subset_type = c('offset_time_horizon', 'dev_calc_type' )
+  # plot_params$plot_subset_param = c('30', 'future_condition')  
+
+  # Note the two elemets of the vector for
+  # simulation_params$offset_action_params can be accessed by the variable
+  # offset_calc_type and offset_action_type. For example
+  #     plot_params$plot_subset_type = c('offset_calc_type', 'offset_action_type' )
+  #     plot_params$plot_subset_param = c('net_gains', 'restore')
+
+
+  # The conditions to apply to the to plots
+  my_subset_conditions <- matrix( ncol=2, byrow=TRUE, c(
+
+    #'offset_time_horizon',                             '30',
+    'dev_calc_type',                                   'future_condition' # current_condition, future_condition
+    ,'include_illegal_clearing_in_offset_calc',        'FALSE'
+    ,'include_potential_developments_in_offset_calc',  'TRUE'             # this should change for the dev too to be the same
+    ,'offset_calc_type',                               'avoided_condition_decline' # net_gains  avoided_condition_decline restoration_gains
+
+    ) )
+  
+  plot_params$plot_subset_type = my_subset_conditions[,1]
+  plot_params$plot_subset_param = my_subset_conditions[,2]
   
   plot_params$site_impact_lwd = 0.5
   plot_params$site_outcome_lwd_vec = c(0.5)
@@ -191,15 +216,15 @@ initialise_user_plot_params <- function(){
   
   plot_params$string_width = 3 # how many digits are used to store scenario index and realisation index
   plot_params$nx = 3 
-  plot_params$ny = 4
+  plot_params$ny = 2
   
-  plot_params$site_outcome_plot_lims_set = rep(list(c(0, 3e4)), length(plot_params$scenario_vec))
-  plot_params$program_outcome_plot_lims_set = rep(list(c(0e6, 1e7)), length(plot_params$scenario_vec))
-  plot_params$landscape_outcome_plot_lims_set = rep(list(c(0, 2e7)), length(plot_params$scenario_vec))
+  plot_params$site_outcome_plot_lims_set = rep(list(c(0, 1e4)), length(plot_params$scenario_vec))
+  plot_params$program_outcome_plot_lims_set = rep(list(c(1.7e6, 5e6)), length(plot_params$scenario_vec))
+  plot_params$landscape_outcome_plot_lims_set = rep(list(c(1e7, 1.5e7)), length(plot_params$scenario_vec))
   
-  plot_params$site_impact_plot_lims_set = rep(list(c(-5e3, 5e3)), length(plot_params$scenario_vec))
-  plot_params$program_impact_plot_lims_set = rep(list(c(-1e6, 1e6)), length(plot_params$scenario_vec)) 
-  plot_params$landscape_impact_plot_lims_set = rep(list(c(-1e6, 0)), length(plot_params$scenario_vec))
+  plot_params$site_impact_plot_lims_set = rep(list(c(-7e3, 1.1e4)), length(plot_params$scenario_vec))
+  plot_params$program_impact_plot_lims_set = rep(list(c(-8e5, 8e5)), length(plot_params$scenario_vec)) 
+  plot_params$landscape_impact_plot_lims_set = rep(list(c(-7e5, 0)), length(plot_params$scenario_vec))
   
   
   
