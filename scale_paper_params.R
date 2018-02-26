@@ -4,6 +4,8 @@ initialise_user_global_params <- function(){
   
   global_params$overwrite_default_params = TRUE
   
+  global_params$scenario_subset = 19
+  
   global_params$user_simulated_ecology_params_file = 'scale_paper_params.R'  # path to file
   
   global_params$number_of_cores = 'all'
@@ -39,7 +41,7 @@ initialise_user_simulation_params <- function(){
   simulation_params$features_to_use_in_offset_intervention = 1
   
   # The total number of parcels that will be developed
-  simulation_params$total_dev_num = 250
+  simulation_params$total_dev_num = 500
   
   # The time step at which development starts
   simulation_params$dev_start = 1
@@ -57,8 +59,9 @@ initialise_user_simulation_params <- function(){
   # Stops the offset from delivering any further gains once it has acheived the gains required
   simulation_params$limit_offset_restoration = TRUE
   
+
   # The probability per parcel of it being illegally cleared, every parcel gets set to this number - set to zero to turn off
-  simulation_params$illegal_clearing_prob = 0.002
+  simulation_params$stochastic_loss_prob = 0.002
   
   # Exclude parcels with less than this number of pixels.
   simulation_params$site_screen_size = 50
@@ -70,9 +73,9 @@ initialise_user_simulation_params <- function(){
 #   c('net_gains', 'restoration_gains', 'avoided_condition_decline', 'avoided_loss',
 #     'protected_condition', 'current_condition', 'restored_condition')
   
-  simulation_params$offset_action_params = list(c('net_gains', 'restore'), 
-											                          c('restoration_gains', 'restore'),
-                                                c('avoided_condition_decline', 'maintain'))
+  simulation_params$offset_action_params = list(c('net_gains', 'restore'),
+                                                c('restoration_gains', 'restore'),
+                                                c('avoided_loss', 'maintain'))
 
   # This is the equivalent of offset_calc_type for the dev parcel. Options
   # are: 'current_condition' - losses are calcuated relative to the value of
@@ -94,19 +97,19 @@ initialise_user_simulation_params <- function(){
   # The time horizon in which the offset gains need to equal the devlopment impact
   simulation_params$offset_time_horizon = list(15, 30)
   
-  # Include illegal clearing in the calculating the contribution of avoided
+  # Include stochastic clearing in the calculating the contribution of avoided
   # losses to the impact of the development. 
-  # simulation_params$include_illegal_clearing_in_dev_calc = simulation_params$include_illegal_clearing_in_offset_calc
+  simulation_params$include_stochastic_loss_in_dev_calc = simulation_params$include_stochastic_loss_in_offset_calc
   
   # Include future legal developments in calculating contribution of avoided
   # losses to the impact of the offset. This increases the impact of the
   # offset (due to future losses that are avoided)
   simulation_params$include_potential_developments_in_offset_calc = list(TRUE, FALSE)
   
-  # Include future illegal developments in calculating contribution of avoided losses
+  # Include future stochastic developments in calculating contribution of avoided losses
   # to the impact of the offset. This increases the impact of the
   # offset (due to future losses that are avoided)
-  simulation_params$include_illegal_clearing_in_offset_calc = list(TRUE, FALSE)
+  simulation_params$include_stochastic_loss_in_offset_calc = list(TRUE, FALSE)
   
   simulation_params$dev_counterfactual_adjustment = 'as_offset'
   # The development impacts is multiplied by this factor (irrespective of how
@@ -138,10 +141,10 @@ initialise_user_simulated_ecology_params <- function(){
   simulated_ecology_params$decline_rate_std = rep(list(1e-3), simulated_ecology_params$feature_num)
   
   # Numnber of parcels in x (but total size varies)
-  simulated_ecology_params$parcel_num_x = 50 
+  simulated_ecology_params$parcel_num_x = 50
   
   # Numnber of parcels in y (but total size varies)
-  simulated_ecology_params$parcel_num_y = 50 
+  simulated_ecology_params$parcel_num_y = 50
   
   #how much the site dimensions should vary
   
@@ -179,7 +182,6 @@ initialise_user_plot_params <- function(){
   plot_params$landscape_col = 'black'
   plot_params$lwd_vec = c(3, 0.5)
   
-
   # Plot subset of the data. For example:
   # plot_params$plot_subset_type = c('offset_time_horizon', 'dev_calc_type' )
   # plot_params$plot_subset_param = c('30', 'future_condition')  
@@ -204,7 +206,6 @@ initialise_user_plot_params <- function(){
   
   plot_params$plot_subset_type = my_subset_conditions[,1]
   plot_params$plot_subset_param = my_subset_conditions[,2]
-
   
   plot_params$site_impact_lwd = 0.5
   plot_params$site_outcome_lwd_vec = c(0.5)
