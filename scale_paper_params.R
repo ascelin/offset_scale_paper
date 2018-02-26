@@ -58,7 +58,7 @@ initialise_user_simulation_params <- function(){
   simulation_params$limit_offset_restoration = TRUE
   
   # The probability per parcel of it being illegally cleared, every parcel gets set to this number - set to zero to turn off
-  simulation_params$illegal_clearing_prob = 0.005
+  simulation_params$illegal_clearing_prob = 0.002
   
   # Exclude parcels with less than this number of pixels.
   simulation_params$site_screen_size = 50
@@ -194,11 +194,11 @@ initialise_user_plot_params <- function(){
   # The conditions to apply to the to plots
   my_subset_conditions <- matrix( ncol=2, byrow=TRUE, c(
 
-    'offset_time_horizon',                            '30'
-    ,'dev_calc_type',                                  'current_condition'
+    #'offset_time_horizon',                             '30',
+    'dev_calc_type',                                   'future_condition' # current_condition, future_condition
     ,'include_illegal_clearing_in_offset_calc',        'FALSE'
-    ,'include_potential_developments_in_offset_calc',  'FALSE'
-    #,'offset_calc_type',                               'restoration_gains' # net_gains  avoided_condition_decline restoration_gains
+    ,'include_potential_developments_in_offset_calc',  'TRUE'             # this should change for the dev too to be the same
+    ,'offset_calc_type',                               'avoided_condition_decline' # net_gains  avoided_condition_decline restoration_gains
 
     ) )
   
@@ -215,7 +215,7 @@ initialise_user_plot_params <- function(){
   
   plot_params$string_width = 3 # how many digits are used to store scenario index and realisation index
   plot_params$nx = 3 
-  plot_params$ny = 4
+  plot_params$ny = 2
   
   plot_params$site_outcome_plot_lims_set = rep(list(c(0, 1e4)), length(plot_params$scenario_vec))
   plot_params$program_outcome_plot_lims_set = rep(list(c(1.7e6, 5e6)), length(plot_params$scenario_vec))
