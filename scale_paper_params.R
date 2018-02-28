@@ -12,7 +12,8 @@ initialise_user_global_params <- function(){
 
   # Where simulation outputs will be written
   #global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
-  global_params$simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/simulation_runs/00001/'
+  #global_params$simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/simulation_runs/00001/'
+  global_params$simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/50-realizations/00003'
   
   # The number of realizations to run
   global_params$realisation_num = 50
@@ -197,8 +198,8 @@ initialise_user_plot_params <- function(){
   my_subset_conditions <- matrix( ncol=2, byrow=TRUE, c(
 
     #'offset_time_horizon',                             '30',
-    'dev_calc_type',                                   'future_condition' # current_condition, future_condition
-    ,'include_illegal_clearing_in_offset_calc',        'FALSE'
+    #'dev_calc_type',                                   'future_condition' # current_condition, future_condition
+    'include_stochastic_loss_in_dev_calc',             'TRUE'
     ,'include_potential_developments_in_offset_calc',  'TRUE'             # this should change for the dev too to be the same
     ,'offset_calc_type',                               'avoided_condition_decline' # net_gains  avoided_condition_decline restoration_gains
 
@@ -216,7 +217,7 @@ initialise_user_plot_params <- function(){
   
   plot_params$string_width = 3 # how many digits are used to store scenario index and realisation index
   plot_params$nx = 3 
-  plot_params$ny = 2
+  plot_params$ny = 4
   
   plot_params$site_outcome_plot_lims_set = rep(list(c(0, 1e4)), length(plot_params$scenario_vec))
   plot_params$program_outcome_plot_lims_set = rep(list(c(1.7e6, 5e6)), length(plot_params$scenario_vec))
@@ -224,7 +225,7 @@ initialise_user_plot_params <- function(){
   
   plot_params$site_impact_plot_lims_set = rep(list(c(-7e3, 1.1e4)), length(plot_params$scenario_vec))
   plot_params$program_impact_plot_lims_set = rep(list(c(-8e5, 8e5)), length(plot_params$scenario_vec)) 
-  plot_params$landscape_impact_plot_lims_set = rep(list(c(-7e5, 0)), length(plot_params$scenario_vec))
+  plot_params$landscape_impact_plot_lims_set = rep(list(c(-25e5, 0)), length(plot_params$scenario_vec))
   
   
   
