@@ -9,8 +9,9 @@ initialise_user_global_params <- function(){
   global_params$user_simulated_ecology_params_file = 'scale_paper_params.R'  # path to file
   
   global_params$number_of_cores = 'all'
+  
   # Where simulation outputs will be written
-  #global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
+  global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
   
   # The number of realizations to run
   global_params$realisation_num = 1
@@ -20,7 +21,7 @@ initialise_user_global_params <- function(){
   
   # Create an animation of the outputs
   global_params$write_movie = FALSE
- 
+  
   return(global_params)
 }
 
@@ -43,7 +44,7 @@ initialise_user_simulation_params <- function(){
   
   # generate the intervention vector stochastically with parameters in format (time_steps, start, end, total_number, standard_deviation)
   simulation_params$intervention_vec = generate_stochstic_intervention_vec(simulation_params$time_steps, 1, simulation_params$time_steps, 500, sd = 1)
-
+  
   # The maxoimum number of parcels can be selected to offset a single development
   
   simulation_params$max_offset_parcel_num = 10
@@ -51,8 +52,9 @@ initialise_user_simulation_params <- function(){
   # Stops the offset from delivering any further gains once it has acheived the gains required
   simulation_params$limit_offset_restoration = TRUE
   
-  # The probability per parcel of it being stochasticly cleared, every parcel gets set to this number - set to zero to turn off
-  simulation_params$stochastic_loss_prob = 0
+  
+  # The probability per parcel of it being illegally cleared, every parcel gets set to this number - set to zero to turn off
+  simulation_params$stochastic_loss_prob = 0.002
   
   # Exclude parcels with less than this number of pixels.
   simulation_params$site_screen_size = 50
@@ -61,18 +63,18 @@ initialise_user_simulation_params <- function(){
   simulation_params$restoration_rate = 0.02
   
   simulation_params$restoration_rate_std = 0.005
-#   c('net_gains', 'restoration_gains', 'avoided_condition_decline', 'avoided_loss',
-#     'protected_condition', 'current_condition', 'restored_condition')
+  #   c('net_gains', 'restoration_gains', 'avoided_condition_decline', 'avoided_loss',
+  #     'protected_condition', 'current_condition', 'restored_condition')
   
   simulation_params$offset_action_params = list(c('net_gains', 'restore'),
                                                 c('restoration_gains', 'restore'),
                                                 c('avoided_loss', 'maintain'))
-
+  
   # This is the equivalent of offset_calc_type for the dev parcel. Options
   # are: 'current_condition' - losses are calcuated relative to the value of
   # the site at the time of the intervention 
   # 'future_condition' - is the do nothing trjectory of the development site.
-  simulation_params$dev_calc_type = 'future_condition'    #'future_condition', 'current_condition' 
+  simulation_params$dev_calc_type = list('future_condition', 'current_condition')
   
   # Track accumulated credit from previous exchanges (eithger in current or
   # previous time step) and use them to allow developments to proceed if the
@@ -84,7 +86,7 @@ initialise_user_simulation_params <- function(){
   # you are running on your own data you need to specify the weights file in
   # intialise_routines.R  (or put the files in simulation_inputs)
   simulation_params$development_selection_type = 'random'  
-
+  
   # The time horizon in which the offset gains need to equal the devlopment impact
   simulation_params$offset_time_horizon = list(15, 30)
   
@@ -199,5 +201,5 @@ initialise_user_output_params <- function(){
   
   
   return(output_params)
+  
 }
-
