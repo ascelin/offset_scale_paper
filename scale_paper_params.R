@@ -4,16 +4,16 @@ initialise_user_global_params <- function(){
   
   global_params$overwrite_default_params = TRUE
   
-  global_params$scenario_subset = 19
+  global_params$scenario_subset = 'all'
   
   global_params$user_simulated_ecology_params_file = 'scale_paper_params.R'  # path to file
   
   global_params$number_of_cores = 'all'
   # Where simulation outputs will be written
-  global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
+  #global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
   
   # The number of realizations to run
-  global_params$realisation_num = 50
+  global_params$realisation_num = 1
   
   # Makes a single pdf at the end of the simulation showing the locatons of all offsets
   global_params$write_offset_layer = FALSE
@@ -38,18 +38,12 @@ initialise_user_simulation_params <- function(){
   
   simulation_params$features_to_use_in_offset_intervention = 1
   
-  # The total number of parcels that will be developed
-  simulation_params$total_dev_num = 500
-  
-  # The time step at which development starts
-  simulation_params$dev_start = 1
-  
-  # The time at which development ends
-  simulation_params$dev_end = 50
-  
   # How long to run the simulaton in years
   simulation_params$time_steps = 50
   
+  # generate the intervention vector stochastically with parameters in format (time_steps, start, end, total_number, standard_deviation)
+  simulation_params$intervention_vec = generate_stochstic_intervention_vec(simulation_params$time_steps, 1, simulation_params$time_steps, 500, sd = 1)
+
   # The maxoimum number of parcels can be selected to offset a single development
   
   simulation_params$max_offset_parcel_num = 10
@@ -164,45 +158,46 @@ initialise_user_simulated_ecology_params <- function(){
 }
 
 
-initialise_user_plot_params <- function(){
-  plot_params = list()
-  plot_params$output_plot_folder = vector()
-  plot_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
-  plot_params$output_type = 'scenarios' # set to plot through 'features', 'scenarios' or 'site_sets'
-  plot_params$realisation_num = 'all' # 'all' or number to plot
-  plot_params$write_pdf = FALSE
-  plot_params$sets_to_plot = 5 # example site to plot
-  plot_params$scenario_vec = 'all' #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
-  plot_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
-  plot_params$program_col_vec = c('darkgreen', 'red', 'black') 
-  plot_params$cfac_col = 'blue' 
-  plot_params$landscape_col = 'black'
-  plot_params$lwd_vec = c(3, 0.5)
+initialise_user_output_params <- function(){
+  output_params = list()
+  output_params$output_plot_folder = vector()
+  output_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
+  output_params$output_plot = TRUE # switch to choose wheteher plots are output
+  output_params$output_csv_file = TRUE #switch to choose whether impacts are exported as csv
+  output_params$realisation_num = 'all' # 'all'  or number to plot
+  output_params$write_pdf = FALSE
+  output_params$sets_to_plot = 5 # example site to plot
+  output_params$scenario_vec = 19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
+  output_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
+  output_params$program_col_vec = c('darkgreen', 'red', 'black') 
+  output_params$cfac_col = 'blue' 
+  output_params$landscape_col = 'black'
+  output_params$lwd_vec = c(3, 0.5)
   
-  plot_params$plot_subset_type = 'all' #c('offset_action_type') # 'offset_calc_type', 'offset_action_type', offset_time_horizon'
-  plot_params$plot_subset_param = 'all' #c('maintain') # 'net_gains', 'restore', 15
+  output_params$plot_subset_type = 'all' #c('offset_action_type') # 'offset_calc_type', 'offset_action_type', offset_time_horizon'
+  output_params$plot_subset_param = 'all' #c('maintain') # 'net_gains', 'restore', 15
   
-  plot_params$site_impact_lwd = 0.5
-  plot_params$site_outcome_lwd_vec = c(0.5)
-  plot_params$program_lwd_vec = c(3, 0.5)
-  plot_params$program_outcome_lwd_vec = c(3, 0.5)
-  plot_params$landscape_lwd_vec  = c(3)
-  plot_params$landscape_outcome_lwd_vec = c(3)
+  output_params$site_impact_lwd = 0.5
+  output_params$site_outcome_lwd_vec = c(0.5)
+  output_params$program_lwd_vec = c(3, 0.5)
+  output_params$program_outcome_lwd_vec = c(3, 0.5)
+  output_params$landscape_lwd_vec  = c(3)
+  output_params$landscape_outcome_lwd_vec = c(3)
   
-  plot_params$string_width = 3 # how many digits are used to store scenario index and realisation index
-  plot_params$nx = 3 
-  plot_params$ny = 4
+  output_params$string_width = 3 # how many digits are used to store scenario index and realisation index
+  output_params$nx = 3 
+  output_params$ny = 4
   
-  plot_params$site_outcome_plot_lims_set = rep(list(c(0, 3e4)), length(plot_params$scenario_vec))
-  plot_params$program_outcome_plot_lims_set = rep(list(c(0e6, 1e7)), length(plot_params$scenario_vec))
-  plot_params$landscape_outcome_plot_lims_set = rep(list(c(0, 2e7)), length(plot_params$scenario_vec))
+  output_params$site_outcome_plot_lims_set = rep(list(c(0, 3e4)), length(output_params$scenario_vec))
+  output_params$program_outcome_plot_lims_set = rep(list(c(0e6, 1e7)), length(output_params$scenario_vec))
+  output_params$landscape_outcome_plot_lims_set = rep(list(c(0, 2e7)), length(output_params$scenario_vec))
   
-  plot_params$site_impact_plot_lims_set = rep(list(c(-5e3, 5e3)), length(plot_params$scenario_vec))
-  plot_params$program_impact_plot_lims_set = rep(list(c(-1e6, 1e6)), length(plot_params$scenario_vec)) 
-  plot_params$landscape_impact_plot_lims_set = rep(list(c(-1e6, 0)), length(plot_params$scenario_vec))
+  output_params$site_impact_plot_lims_set = rep(list(c(-5e3, 5e3)), length(output_params$scenario_vec))
+  output_params$program_impact_plot_lims_set = rep(list(c(-1e6, 1e6)), length(output_params$scenario_vec)) 
+  output_params$landscape_impact_plot_lims_set = rep(list(c(-1e6, 0)), length(output_params$scenario_vec))
   
   
   
-  return(plot_params)
+  return(output_params)
 }
 
