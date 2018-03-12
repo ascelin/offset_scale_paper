@@ -2,16 +2,12 @@ initialise_user_global_params <- function(){
   
   global_params = list()
   
-  global_params$overwrite_default_params = TRUE
-  
   global_params$scenario_subset = 'all'
-  
   global_params$user_simulated_ecology_params_file = 'scale_paper_params.R'  # path to file
-  
   global_params$number_of_cores = 'all'
   
   # Where simulation outputs will be written
-  global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
+  global_params$simulation_folder = 'default'
   
   # The number of realizations to run
   global_params$realisation_num = 1
@@ -46,7 +42,7 @@ initialise_user_simulation_params <- function(){
   simulation_params$intervention_vec = generate_stochastic_intervention_vec(time_steps = simulation_params$time_steps, 
                                                                             intervention_start = 1, 
                                                                             intervention_end = simulation_params$time_steps, 
-                                                                            intervention_num = 500, 
+                                                                            intervention_num = 50, 
                                                                             sd = 1)
   
   # The maxoimum number of parcels can be selected to offset a single development
