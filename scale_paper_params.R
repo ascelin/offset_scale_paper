@@ -43,7 +43,11 @@ initialise_user_simulation_params <- function(){
   simulation_params$time_steps = 50
   
   # generate the intervention vector stochastically with parameters in format (time_steps, start, end, total_number, standard_deviation)
-  simulation_params$intervention_vec = generate_stochastic_intervention_vec(simulation_params$time_steps, 1, simulation_params$time_steps, 500, sd = 1)
+  simulation_params$intervention_vec = generate_stochastic_intervention_vec(time_steps = simulation_params$time_steps, 
+                                                                            intervention_start = 1, 
+                                                                            intervention_end = simulation_params$time_steps, 
+                                                                            intervention_num = 500, 
+                                                                            sd = 1)
   
   # The maxoimum number of parcels can be selected to offset a single development
   
