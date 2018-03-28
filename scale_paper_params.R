@@ -54,7 +54,7 @@ initialise_user_simulation_params <- function(){
   
   
   # The probability per parcel of it being illegally cleared, every parcel gets set to this number - set to zero to turn off
-  simulation_params$stochastic_loss_prob = 0.002
+  simulation_params$unregulated_loss_prob = 0.002
   
   # Exclude parcels with less than this number of pixels.
   simulation_params$site_screen_size = 50
@@ -92,7 +92,7 @@ initialise_user_simulation_params <- function(){
   
   # Include stochastic clearing in the calculating the contribution of avoided
   # losses to the impact of the development. 
-  simulation_params$include_stochastic_loss_in_dev_calc = simulation_params$include_stochastic_loss_in_offset_calc
+  simulation_params$include_unregulated_loss_in_dev_calc = simulation_params$include_unregulated_loss_in_offset_calc
   
   # Include future legal developments in calculating contribution of avoided
   # losses to the impact of the offset. This increases the impact of the
@@ -102,7 +102,7 @@ initialise_user_simulation_params <- function(){
   # Include future stochastic developments in calculating contribution of avoided losses
   # to the impact of the offset. This increases the impact of the
   # offset (due to future losses that are avoided)
-  simulation_params$include_stochastic_loss_in_offset_calc = list(TRUE, FALSE)
+  simulation_params$include_unregulated_loss_in_offset_calc = list(TRUE, FALSE)
   
   simulation_params$dev_counterfactual_adjustment = 'as_offset'
   # The development impacts is multiplied by this factor (irrespective of how
