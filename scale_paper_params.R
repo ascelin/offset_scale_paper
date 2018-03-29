@@ -7,7 +7,9 @@ initialise_user_global_params <- function(){
   global_params$number_of_cores = 'all'
   
   # Where simulation outputs will be written
-  global_params$simulation_folder = 'default'
+  #global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
+  global_params$simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/test/'
+  #global_params$simulation_folder = 'default'
   
   # The number of realizations to run
   global_params$realisation_num = 1
@@ -99,8 +101,9 @@ initialise_user_simulation_params <- function(){
   # to the impact of the offset. This increases the impact of the
   # offset (due to future losses that are avoided)
   simulation_params$include_unregulated_loss_in_offset_calc = list(TRUE, FALSE)
-  
+
   simulation_params$dev_counterfactual_adjustment = 'as_offset'
+
   # The development impacts is multiplied by this factor (irrespective of how
   # they were caluclated) and the offset impact then needs to match this
   # multiplied development impact
@@ -162,19 +165,45 @@ initialise_user_output_params <- function(){
   output_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
   output_params$output_plot = TRUE # switch to choose wheteher plots are output
   output_params$output_csv_file = TRUE #switch to choose whether impacts are exported as csv
-  output_params$realisation_num = 'all' # 'all'  or number to plot
+  output_params$realisation_num = 10 #'all' # 'all'  or number to plot
   output_params$write_pdf = FALSE
   output_params$sets_to_plot = 5 # example site to plot
-  output_params$scenario_vec = 19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
+  output_params$scenario_vec = 'all' #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
   output_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
   output_params$program_col_vec = c('darkgreen', 'red', 'black') 
   output_params$cfac_col = 'blue' 
   output_params$landscape_col = 'black'
   output_params$lwd_vec = c(3, 0.5)
+
+  # Plot subset of the data. For example:
+  # output_params$plot_subset_type = c('offset_time_horizon', 'dev_calc_type' )
+  # output_params$plot_subset_param = c('30', 'future_condition')  
+
+  # Note the two elemets of the vector for
+  # simulation_params$offset_action_params can be accessed by the variable
+  # offset_calc_type and offset_action_type. For example
+  #     output_params$plot_subset_type = c('offset_calc_type', 'offset_action_type' )
+  #     output_params$plot_subset_param = c('net_gains', 'restore')
+
+
+  # The conditions to apply to the to plots
+  my_subset_conditions <- matrix( ncol=2, byrow=TRUE, c(
+
+    #'offset_time_horizon',                             '30',
+    #'dev_calc_type',                                   'future_condition' # current_condition, future_condition
+    'include_stochastic_loss_in_dev_calc',             'TRUE'
+    ,'include_potential_developments_in_offset_calc',  'TRUE'             # this should change for the dev too to be the same
+    ,'offset_calc_type',                               'avoided_condition_decline' # net_gains  avoided_condition_decline restoration_gains
+
+    ) )
+
+ 
+  #output_params$plot_subset_type = 'all' #c('offset_action_type') # 'offset_calc_type', 'offset_action_type', offset_time_horizon'
+  #output_params$plot_subset_param = 'all' #c('maintain') # 'net_gains', 'restore', 15
   
-  output_params$plot_subset_type = 'all' #c('offset_action_type') # 'offset_calc_type', 'offset_action_type', offset_time_horizon'
-  output_params$plot_subset_param = 'all' #c('maintain') # 'net_gains', 'restore', 15
-  
+  output_params$plot_subset_type = my_subset_conditions[,1]
+  output_params$plot_subset_param = my_subset_conditions[,2]
+
   output_params$site_impact_lwd = 0.5
   output_params$site_outcome_lwd_vec = c(0.5)
   output_params$program_lwd_vec = c(3, 0.5)
@@ -182,18 +211,21 @@ initialise_user_output_params <- function(){
   output_params$landscape_lwd_vec  = c(3)
   output_params$landscape_outcome_lwd_vec = c(3)
   
+
   output_params$string_width = 3 # how many digits are used to store scenario index and realisation index
   output_params$nx = 3 
   output_params$ny = 4
+
   
   output_params$site_outcome_plot_lims_set = rep(list(c(0, 3e4)), length(output_params$scenario_vec))
   output_params$program_outcome_plot_lims_set = rep(list(c(0e6, 1e7)), length(output_params$scenario_vec))
   output_params$landscape_outcome_plot_lims_set = rep(list(c(0, 2e7)), length(output_params$scenario_vec))
   
-  output_params$site_impact_plot_lims_set = rep(list(c(-5e3, 5e3)), length(output_params$scenario_vec))
-  output_params$program_impact_plot_lims_set = rep(list(c(-1e6, 1e6)), length(output_params$scenario_vec)) 
-  output_params$landscape_impact_plot_lims_set = rep(list(c(-1e6, 0)), length(output_params$scenario_vec))
-  
+
+  output_params$site_impact_plot_lims_set = rep(list(c(-7e3, 1.1e4)), length(output_params$scenario_vec))
+  output_params$program_impact_plot_lims_set = rep(list(c(-8e5, 8e5)), length(output_params$scenario_vec)) 
+  output_params$landscape_impact_plot_lims_set = rep(list(c(-25e5, 0)), length(output_params$scenario_vec))
+
   
   
   return(output_params)
