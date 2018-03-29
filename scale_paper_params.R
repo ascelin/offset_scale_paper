@@ -7,8 +7,8 @@ initialise_user_global_params <- function(){
   global_params$number_of_cores = 'all'
   
   # Where simulation outputs will be written
-  #global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
-  global_params$simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/test/'
+  global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
+
   #global_params$simulation_folder = 'default'
   
   # The number of realizations to run
