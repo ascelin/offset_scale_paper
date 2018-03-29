@@ -90,10 +90,6 @@ initialise_user_simulation_params <- function(){
   # The time horizon in which the offset gains need to equal the devlopment impact
   simulation_params$offset_time_horizon = list(15, 30)
   
-  # Include stochastic clearing in the calculating the contribution of avoided
-  # losses to the impact of the development. 
-  simulation_params$include_unregulated_loss_in_dev_calc = simulation_params$include_unregulated_loss_in_offset_calc
-  
   # Include future legal developments in calculating contribution of avoided
   # losses to the impact of the offset. This increases the impact of the
   # offset (due to future losses that are avoided)
