@@ -8,11 +8,11 @@ initialise_user_global_params <- function(){
   
   # Where simulation outputs will be written
   #global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/simulated/')
-  global_params$simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/test/'
-  #global_params$simulation_folder = 'default'
+  #global_params$simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/test/'
+  global_params$simulation_folder = 'default'
   
   # The number of realizations to run
-  global_params$realisation_num = 1
+  global_params$realisation_num = 5
   
   # Makes a single pdf at the end of the simulation showing the locatons of all offsets
   global_params$write_offset_layer = FALSE
