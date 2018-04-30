@@ -165,7 +165,7 @@ initialise_user_output_params <- function(){
   output_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
   output_params$output_plot = TRUE # switch to choose wheteher plots are output
   output_params$output_csv_file = TRUE #switch to choose whether impacts are exported as csv
-  output_params$realisation_num = 10 #'all' # 'all'  or number to plot
+  output_params$realisation_num = 'all'; 10 #'all' # 'all'  or number to plot
   output_params$write_pdf = FALSE
   output_params$sets_to_plot = 5 # example site to plot
   output_params$scenario_vec = 'all' #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
@@ -174,6 +174,7 @@ initialise_user_output_params <- function(){
   output_params$cfac_col = 'blue' 
   output_params$landscape_col = 'black'
   output_params$lwd_vec = c(3, 0.5)
+  output_params$print_dev_offset_sites = TRUE
 
   # Plot subset of the data. For example:
   # output_params$plot_subset_type = c('offset_time_horizon', 'dev_calc_type' )
@@ -189,11 +190,11 @@ initialise_user_output_params <- function(){
   # The conditions to apply to the to plots
   my_subset_conditions <- matrix( ncol=2, byrow=TRUE, c(
 
-    #'offset_time_horizon',                             '30',
-    #'dev_calc_type',                                   'future_condition' # current_condition, future_condition
-    'include_stochastic_loss_in_dev_calc',             'TRUE'
+    'offset_time_horizon',                             '15',
+    'dev_calc_type',                                   'future_condition' # current_condition, future_condition
+    ,'include_unregulated_loss_in_offset_calc',        'FALSE'
     ,'include_potential_developments_in_offset_calc',  'TRUE'             # this should change for the dev too to be the same
-    ,'offset_calc_type',                               'avoided_condition_decline' # net_gains  avoided_condition_decline restoration_gains
+    #,'offset_calc_type',                               'avoided_condition_decline' # net_gains  avoided_condition_decline restoration_gains
 
     ) )
 
@@ -201,8 +202,8 @@ initialise_user_output_params <- function(){
   #output_params$plot_subset_type = 'all' #c('offset_action_type') # 'offset_calc_type', 'offset_action_type', offset_time_horizon'
   #output_params$plot_subset_param = 'all' #c('maintain') # 'net_gains', 'restore', 15
   
-  output_params$plot_subset_type = my_subset_conditions[,1]
-  output_params$plot_subset_param = my_subset_conditions[,2]
+  #output_params$plot_subset_type = my_subset_conditions[,1]
+  #output_params$plot_subset_param = my_subset_conditions[,2]
 
   output_params$site_impact_lwd = 0.5
   output_params$site_outcome_lwd_vec = c(0.5)
@@ -223,7 +224,7 @@ initialise_user_output_params <- function(){
   
 
   output_params$site_impact_plot_lims_set = rep(list(c(-7e3, 1.1e4)), length(output_params$scenario_vec))
-  output_params$program_impact_plot_lims_set = rep(list(c(-8e5, 8e5)), length(output_params$scenario_vec)) 
+  output_params$program_impact_plot_lims_set = rep(list(c(-3e5, 3e5)), length(output_params$scenario_vec)) 
   output_params$landscape_impact_plot_lims_set = rep(list(c(-25e5, 0)), length(output_params$scenario_vec))
 
   
