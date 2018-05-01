@@ -21,4 +21,5 @@ current_simulation_folder = find_current_run_folder(user_global_params$simulatio
 
 # current_simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/March/00002' # old code
 # current_simulation_folder = '/Users/ascelin/analysis/offset_simulator/new_package_runs/March/00003' # mmew code
+
 osim.output(user_output_params, current_simulation_folder, loglevel = 'INFO')
