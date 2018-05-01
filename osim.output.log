@@ -1,0 +1,629 @@
+INFO [2018-04-30 15:02:24] reading simulation_runs/00055//simulation_params//global_params.rds
+INFO [2018-04-30 15:02:24] _________________________________
+INFO [2018-04-30 15:02:24] Generating plot 1 (scen 1 of type: impacts)
+INFO [2018-04-30 15:02:24]  offset_action_params = (net_gains, restore)
+INFO [2018-04-30 15:02:24]  dev_calc_type = future_condition
+INFO [2018-04-30 15:02:24]  offset_time_horizon = 15
+INFO [2018-04-30 15:02:24]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-04-30 15:02:24]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-04-30 15:02:24] Mean number of sites used for:
+INFO [2018-04-30 15:04:37] reading simulation_runs/00055//simulation_params//global_params.rds
+INFO [2018-04-30 15:04:37] _________________________________
+INFO [2018-04-30 15:04:37]  generating plot 1 (scen 1 of type: impacts)
+INFO [2018-04-30 15:04:37] offset_action_params
+INFO [2018-04-30 15:04:37] c("net_gains", "restore")
+INFO [2018-04-30 15:04:37] dev_calc_type
+INFO [2018-04-30 15:04:37] future_condition
+INFO [2018-04-30 15:04:37] offset_time_horizon
+INFO [2018-04-30 15:04:37] 15
+INFO [2018-04-30 15:04:37] include_potential_developments_in_offset_calc
+INFO [2018-04-30 15:04:37] TRUE
+INFO [2018-04-30 15:04:37] include_unregulated_loss_in_offset_calc
+INFO [2018-04-30 15:04:37] TRUE
+INFO [2018-04-30 15:12:34] reading simulation_runs/00056//simulation_params//global_params.rds
+INFO [2018-04-30 15:12:34] _________________________________
+INFO [2018-04-30 15:12:34] Generating plot 1 (scen 1 of type: impacts)
+INFO [2018-04-30 15:12:34]  offset_action_params = (net_gains, restore)
+INFO [2018-04-30 15:12:34]  dev_calc_type = future_condition
+INFO [2018-04-30 15:12:34]  offset_time_horizon = 15
+INFO [2018-04-30 15:12:34]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-04-30 15:12:34]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-04-30 15:12:34] Mean number of sites used for:
+INFO [2018-05-01 11:28:28] reading simulation_runs/00059//simulation_params//global_params.rds
+INFO [2018-05-01 11:28:28] _________________________________
+INFO [2018-05-01 11:28:28] Generating plot 1 (scen 1 of type: impacts)
+INFO [2018-05-01 11:28:28]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 11:28:28]  dev_calc_type = future_condition
+INFO [2018-05-01 11:28:28]  offset_time_horizon = 15
+INFO [2018-05-01 11:28:28]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 11:28:28]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 11:28:28] Mean number of sites used for:
+INFO [2018-05-01 11:28:28]  offsets = 145
+INFO [2018-05-01 11:28:28]  devs = 50
+INFO [2018-05-01 11:28:28]  sites_lost = 213
+INFO [2018-05-01 11:28:29] writing outputs to csv
+INFO [2018-05-01 11:28:29] _________________________________
+INFO [2018-05-01 11:28:29] Generating plot 2 (scen 2 of type: impacts)
+INFO [2018-05-01 11:28:29]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 11:28:29]  dev_calc_type = future_condition
+INFO [2018-05-01 11:28:29]  offset_time_horizon = 15
+INFO [2018-05-01 11:28:29]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 11:28:29]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:48] reading simulation_runs/00061//simulation_params//global_params.rds
+INFO [2018-05-01 13:26:48] _________________________________
+INFO [2018-05-01 13:26:48] Generating plot 1 (scen 1 of type: impacts)
+INFO [2018-05-01 13:26:48]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:48]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:48]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:48]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:48]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:48] Mean number of sites used for:
+INFO [2018-05-01 13:26:48]  offsets = 168
+INFO [2018-05-01 13:26:48]  devs = 50
+INFO [2018-05-01 13:26:48]  sites_lost = 220
+INFO [2018-05-01 13:26:48] writing outputs to csv
+INFO [2018-05-01 13:26:48] _________________________________
+INFO [2018-05-01 13:26:48] Generating plot 2 (scen 2 of type: impacts)
+INFO [2018-05-01 13:26:48]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:48]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:48]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:48]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:48]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:48] Mean number of sites used for:
+INFO [2018-05-01 13:26:48]  offsets = 162
+INFO [2018-05-01 13:26:48]  devs = 50
+INFO [2018-05-01 13:26:48]  sites_lost = 198
+INFO [2018-05-01 13:26:49] writing outputs to csv
+INFO [2018-05-01 13:26:49] _________________________________
+INFO [2018-05-01 13:26:49] Generating plot 3 (scen 3 of type: impacts)
+INFO [2018-05-01 13:26:49]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:49]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:49]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:49]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:49]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:49] Mean number of sites used for:
+INFO [2018-05-01 13:26:49]  offsets = 312
+INFO [2018-05-01 13:26:49]  devs = 50
+INFO [2018-05-01 13:26:49]  sites_lost = 230
+INFO [2018-05-01 13:26:49] writing outputs to csv
+INFO [2018-05-01 13:26:49] _________________________________
+INFO [2018-05-01 13:26:49] Generating plot 4 (scen 4 of type: impacts)
+INFO [2018-05-01 13:26:49]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:49]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:49]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:49]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:49]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:49] Mean number of sites used for:
+INFO [2018-05-01 13:26:49]  offsets = 172
+INFO [2018-05-01 13:26:49]  devs = 50
+INFO [2018-05-01 13:26:49]  sites_lost = 213
+INFO [2018-05-01 13:26:49] writing outputs to csv
+INFO [2018-05-01 13:26:49] _________________________________
+INFO [2018-05-01 13:26:49] Generating plot 5 (scen 5 of type: impacts)
+INFO [2018-05-01 13:26:49]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:49]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:49]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:49]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:49]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:49] Mean number of sites used for:
+INFO [2018-05-01 13:26:49]  offsets = 203
+INFO [2018-05-01 13:26:49]  devs = 50
+INFO [2018-05-01 13:26:49]  sites_lost = 219
+INFO [2018-05-01 13:26:49] writing outputs to csv
+INFO [2018-05-01 13:26:49] _________________________________
+INFO [2018-05-01 13:26:49] Generating plot 6 (scen 6 of type: impacts)
+INFO [2018-05-01 13:26:49]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:49]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:49]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:49]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:49]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:49] Mean number of sites used for:
+INFO [2018-05-01 13:26:49]  offsets = 339
+INFO [2018-05-01 13:26:49]  devs = 50
+INFO [2018-05-01 13:26:49]  sites_lost = 207
+INFO [2018-05-01 13:26:49] writing outputs to csv
+INFO [2018-05-01 13:26:49] _________________________________
+INFO [2018-05-01 13:26:49] Generating plot 7 (scen 7 of type: impacts)
+INFO [2018-05-01 13:26:49]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:49]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:49]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:50]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50] Mean number of sites used for:
+INFO [2018-05-01 13:26:50]  offsets = 76
+INFO [2018-05-01 13:26:50]  devs = 48
+INFO [2018-05-01 13:26:50]  sites_lost = 243
+INFO [2018-05-01 13:26:50] writing outputs to csv
+INFO [2018-05-01 13:26:50] _________________________________
+INFO [2018-05-01 13:26:50] Generating plot 8 (scen 8 of type: impacts)
+INFO [2018-05-01 13:26:50]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:50]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:50]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:50]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50] Mean number of sites used for:
+INFO [2018-05-01 13:26:50]  offsets = 80
+INFO [2018-05-01 13:26:50]  devs = 50
+INFO [2018-05-01 13:26:50]  sites_lost = 244
+INFO [2018-05-01 13:26:50] writing outputs to csv
+INFO [2018-05-01 13:26:50] _________________________________
+INFO [2018-05-01 13:26:50] Generating plot 9 (scen 9 of type: impacts)
+INFO [2018-05-01 13:26:50]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:50]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:50]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:50]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50] Mean number of sites used for:
+INFO [2018-05-01 13:26:50]  offsets = 178
+INFO [2018-05-01 13:26:50]  devs = 50
+INFO [2018-05-01 13:26:50]  sites_lost = 226
+INFO [2018-05-01 13:26:50] writing outputs to csv
+INFO [2018-05-01 13:26:50] _________________________________
+INFO [2018-05-01 13:26:50] Generating plot 10 (scen 10 of type: impacts)
+INFO [2018-05-01 13:26:50]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:50]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:50]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:50]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50] Mean number of sites used for:
+INFO [2018-05-01 13:26:50]  offsets = 102
+INFO [2018-05-01 13:26:50]  devs = 50
+INFO [2018-05-01 13:26:50]  sites_lost = 227
+INFO [2018-05-01 13:26:50] writing outputs to csv
+INFO [2018-05-01 13:26:50] _________________________________
+INFO [2018-05-01 13:26:50] Generating plot 11 (scen 11 of type: impacts)
+INFO [2018-05-01 13:26:50]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:50]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:50]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:50]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:50] Mean number of sites used for:
+INFO [2018-05-01 13:26:50]  offsets = 94
+INFO [2018-05-01 13:26:50]  devs = 50
+INFO [2018-05-01 13:26:50]  sites_lost = 247
+INFO [2018-05-01 13:26:51] writing outputs to csv
+INFO [2018-05-01 13:26:51] _________________________________
+INFO [2018-05-01 13:26:51] Generating plot 12 (scen 12 of type: impacts)
+INFO [2018-05-01 13:26:51]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:51]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:51]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:51]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:51]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:51] Mean number of sites used for:
+INFO [2018-05-01 13:26:51]  offsets = 196
+INFO [2018-05-01 13:26:51]  devs = 50
+INFO [2018-05-01 13:26:51]  sites_lost = 210
+INFO [2018-05-01 13:26:51] writing outputs to csv
+INFO [2018-05-01 13:26:51] _________________________________
+INFO [2018-05-01 13:26:51] Generating plot 13 (scen 13 of type: impacts)
+INFO [2018-05-01 13:26:51]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:51]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:51]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:51]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:51]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:51] Mean number of sites used for:
+INFO [2018-05-01 13:26:51]  offsets = 165
+INFO [2018-05-01 13:26:51]  devs = 50
+INFO [2018-05-01 13:26:51]  sites_lost = 221
+INFO [2018-05-01 13:26:51] writing outputs to csv
+INFO [2018-05-01 13:26:51] _________________________________
+INFO [2018-05-01 13:26:51] Generating plot 14 (scen 14 of type: impacts)
+INFO [2018-05-01 13:26:51]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:51]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:51]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:51]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:51]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:51] Mean number of sites used for:
+INFO [2018-05-01 13:26:51]  offsets = 159
+INFO [2018-05-01 13:26:51]  devs = 50
+INFO [2018-05-01 13:26:51]  sites_lost = 208
+INFO [2018-05-01 13:26:51] writing outputs to csv
+INFO [2018-05-01 13:26:51] _________________________________
+INFO [2018-05-01 13:26:51] Generating plot 15 (scen 15 of type: impacts)
+INFO [2018-05-01 13:26:51]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:51]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:51]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:51]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:51]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:51] Mean number of sites used for:
+INFO [2018-05-01 13:26:51]  offsets = 315
+INFO [2018-05-01 13:26:51]  devs = 50
+INFO [2018-05-01 13:26:51]  sites_lost = 215
+INFO [2018-05-01 13:26:51] writing outputs to csv
+INFO [2018-05-01 13:26:51] _________________________________
+INFO [2018-05-01 13:26:51] Generating plot 16 (scen 16 of type: impacts)
+INFO [2018-05-01 13:26:51]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:51]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:51]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:51]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:51]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:51] Mean number of sites used for:
+INFO [2018-05-01 13:26:51]  offsets = 171
+INFO [2018-05-01 13:26:51]  devs = 50
+INFO [2018-05-01 13:26:51]  sites_lost = 238
+INFO [2018-05-01 13:26:51] writing outputs to csv
+INFO [2018-05-01 13:26:51] _________________________________
+INFO [2018-05-01 13:26:51] Generating plot 17 (scen 17 of type: impacts)
+INFO [2018-05-01 13:26:51]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:51]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:51]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:51]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:51]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:52] Mean number of sites used for:
+INFO [2018-05-01 13:26:52]  offsets = 179
+INFO [2018-05-01 13:26:52]  devs = 50
+INFO [2018-05-01 13:26:52]  sites_lost = 216
+INFO [2018-05-01 13:26:52] writing outputs to csv
+INFO [2018-05-01 13:26:52] _________________________________
+INFO [2018-05-01 13:26:52] Generating plot 18 (scen 18 of type: impacts)
+INFO [2018-05-01 13:26:52]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:52]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:52]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:52]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:52]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:52] Mean number of sites used for:
+INFO [2018-05-01 13:26:52]  offsets = 333
+INFO [2018-05-01 13:26:52]  devs = 50
+INFO [2018-05-01 13:26:52]  sites_lost = 205
+INFO [2018-05-01 13:26:52] writing outputs to csv
+INFO [2018-05-01 13:26:52] _________________________________
+INFO [2018-05-01 13:26:52] Generating plot 19 (scen 19 of type: impacts)
+INFO [2018-05-01 13:26:52]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:52]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:52]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:52]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:52]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:52] Mean number of sites used for:
+INFO [2018-05-01 13:26:52]  offsets = 79
+INFO [2018-05-01 13:26:52]  devs = 50
+INFO [2018-05-01 13:26:52]  sites_lost = 225
+INFO [2018-05-01 13:26:52] writing outputs to csv
+INFO [2018-05-01 13:26:52] _________________________________
+INFO [2018-05-01 13:26:52] Generating plot 20 (scen 20 of type: impacts)
+INFO [2018-05-01 13:26:52]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:52]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:52]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:52]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:52]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:52] Mean number of sites used for:
+INFO [2018-05-01 13:26:52]  offsets = 83
+INFO [2018-05-01 13:26:52]  devs = 49
+INFO [2018-05-01 13:26:52]  sites_lost = 236
+INFO [2018-05-01 13:26:52] writing outputs to csv
+INFO [2018-05-01 13:26:52] _________________________________
+INFO [2018-05-01 13:26:52] Generating plot 21 (scen 21 of type: impacts)
+INFO [2018-05-01 13:26:52]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:52]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:52]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:52]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:52]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:52] Mean number of sites used for:
+INFO [2018-05-01 13:26:52]  offsets = 171
+INFO [2018-05-01 13:26:52]  devs = 50
+INFO [2018-05-01 13:26:52]  sites_lost = 240
+INFO [2018-05-01 13:26:52] writing outputs to csv
+INFO [2018-05-01 13:26:52] _________________________________
+INFO [2018-05-01 13:26:52] Generating plot 22 (scen 22 of type: impacts)
+INFO [2018-05-01 13:26:52]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:52]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:52]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:52]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:52]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:52] Mean number of sites used for:
+INFO [2018-05-01 13:26:52]  offsets = 89
+INFO [2018-05-01 13:26:52]  devs = 50
+INFO [2018-05-01 13:26:52]  sites_lost = 240
+INFO [2018-05-01 13:26:53] writing outputs to csv
+INFO [2018-05-01 13:26:53] _________________________________
+INFO [2018-05-01 13:26:53] Generating plot 23 (scen 23 of type: impacts)
+INFO [2018-05-01 13:26:53]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:53]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:53]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:53]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:53]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:53] Mean number of sites used for:
+INFO [2018-05-01 13:26:53]  offsets = 96
+INFO [2018-05-01 13:26:53]  devs = 50
+INFO [2018-05-01 13:26:53]  sites_lost = 204
+INFO [2018-05-01 13:26:53] writing outputs to csv
+INFO [2018-05-01 13:26:53] _________________________________
+INFO [2018-05-01 13:26:53] Generating plot 24 (scen 24 of type: impacts)
+INFO [2018-05-01 13:26:53]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:53]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:53]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:53]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:53]  include_unregulated_loss_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:53] Mean number of sites used for:
+INFO [2018-05-01 13:26:53]  offsets = 208
+INFO [2018-05-01 13:26:53]  devs = 50
+INFO [2018-05-01 13:26:53]  sites_lost = 222
+INFO [2018-05-01 13:26:53] writing outputs to csv
+INFO [2018-05-01 13:26:53] _________________________________
+INFO [2018-05-01 13:26:53] Generating plot 25 (scen 25 of type: impacts)
+INFO [2018-05-01 13:26:53]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:53]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:53]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:53]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:53]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:53] Mean number of sites used for:
+INFO [2018-05-01 13:26:53]  offsets = 178
+INFO [2018-05-01 13:26:53]  devs = 50
+INFO [2018-05-01 13:26:53]  sites_lost = 243
+INFO [2018-05-01 13:26:53] writing outputs to csv
+INFO [2018-05-01 13:26:53] _________________________________
+INFO [2018-05-01 13:26:53] Generating plot 26 (scen 26 of type: impacts)
+INFO [2018-05-01 13:26:53]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:53]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:53]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:53]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:53]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:53] Mean number of sites used for:
+INFO [2018-05-01 13:26:53]  offsets = 194
+INFO [2018-05-01 13:26:53]  devs = 50
+INFO [2018-05-01 13:26:53]  sites_lost = 229
+INFO [2018-05-01 13:26:53] writing outputs to csv
+INFO [2018-05-01 13:26:53] _________________________________
+INFO [2018-05-01 13:26:53] Generating plot 27 (scen 27 of type: impacts)
+INFO [2018-05-01 13:26:53]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:53]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:53]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:53]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:53]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:53] Mean number of sites used for:
+INFO [2018-05-01 13:26:53]  offsets = 360
+INFO [2018-05-01 13:26:53]  devs = 50
+INFO [2018-05-01 13:26:53]  sites_lost = 217
+INFO [2018-05-01 13:26:53] writing outputs to csv
+INFO [2018-05-01 13:26:54] _________________________________
+INFO [2018-05-01 13:26:54] Generating plot 28 (scen 28 of type: impacts)
+INFO [2018-05-01 13:26:54]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:54]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:54]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:54]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:54]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:54] Mean number of sites used for:
+INFO [2018-05-01 13:26:54]  offsets = 190
+INFO [2018-05-01 13:26:54]  devs = 50
+INFO [2018-05-01 13:26:54]  sites_lost = 208
+INFO [2018-05-01 13:26:54] writing outputs to csv
+INFO [2018-05-01 13:26:54] _________________________________
+INFO [2018-05-01 13:26:54] Generating plot 29 (scen 29 of type: impacts)
+INFO [2018-05-01 13:26:54]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:54]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:54]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:54]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:54]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:54] Mean number of sites used for:
+INFO [2018-05-01 13:26:54]  offsets = 202
+INFO [2018-05-01 13:26:54]  devs = 50
+INFO [2018-05-01 13:26:54]  sites_lost = 207
+INFO [2018-05-01 13:26:54] writing outputs to csv
+INFO [2018-05-01 13:26:54] _________________________________
+INFO [2018-05-01 13:26:54] Generating plot 30 (scen 30 of type: impacts)
+INFO [2018-05-01 13:26:54]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:54]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:54]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:54]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:54]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:54] Mean number of sites used for:
+INFO [2018-05-01 13:26:54]  offsets = 381
+INFO [2018-05-01 13:26:54]  devs = 50
+INFO [2018-05-01 13:26:54]  sites_lost = 226
+INFO [2018-05-01 13:26:54] writing outputs to csv
+INFO [2018-05-01 13:26:54] _________________________________
+INFO [2018-05-01 13:26:54] Generating plot 31 (scen 31 of type: impacts)
+INFO [2018-05-01 13:26:54]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:54]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:54]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:54]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:54]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:54] Mean number of sites used for:
+INFO [2018-05-01 13:26:54]  offsets = 85
+INFO [2018-05-01 13:26:54]  devs = 49
+INFO [2018-05-01 13:26:54]  sites_lost = 223
+INFO [2018-05-01 13:26:54] writing outputs to csv
+INFO [2018-05-01 13:26:54] _________________________________
+INFO [2018-05-01 13:26:54] Generating plot 32 (scen 32 of type: impacts)
+INFO [2018-05-01 13:26:54]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:54]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:54]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:54]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:54]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:54] Mean number of sites used for:
+INFO [2018-05-01 13:26:54]  offsets = 87
+INFO [2018-05-01 13:26:54]  devs = 50
+INFO [2018-05-01 13:26:54]  sites_lost = 210
+INFO [2018-05-01 13:26:54] writing outputs to csv
+INFO [2018-05-01 13:26:55] _________________________________
+INFO [2018-05-01 13:26:55] Generating plot 33 (scen 33 of type: impacts)
+INFO [2018-05-01 13:26:55]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:55]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:55]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:55]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:55]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:55] Mean number of sites used for:
+INFO [2018-05-01 13:26:55]  offsets = 239
+INFO [2018-05-01 13:26:55]  devs = 50
+INFO [2018-05-01 13:26:55]  sites_lost = 215
+INFO [2018-05-01 13:26:55] writing outputs to csv
+INFO [2018-05-01 13:26:55] _________________________________
+INFO [2018-05-01 13:26:55] Generating plot 34 (scen 34 of type: impacts)
+INFO [2018-05-01 13:26:55]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:55]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:55]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:55]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:55]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:55] Mean number of sites used for:
+INFO [2018-05-01 13:26:55]  offsets = 103
+INFO [2018-05-01 13:26:55]  devs = 50
+INFO [2018-05-01 13:26:55]  sites_lost = 235
+INFO [2018-05-01 13:26:55] writing outputs to csv
+INFO [2018-05-01 13:26:55] _________________________________
+INFO [2018-05-01 13:26:55] Generating plot 35 (scen 35 of type: impacts)
+INFO [2018-05-01 13:26:55]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:55]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:55]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:55]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:55]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:55] Mean number of sites used for:
+INFO [2018-05-01 13:26:55]  offsets = 105
+INFO [2018-05-01 13:26:55]  devs = 50
+INFO [2018-05-01 13:26:55]  sites_lost = 244
+INFO [2018-05-01 13:26:55] writing outputs to csv
+INFO [2018-05-01 13:26:55] _________________________________
+INFO [2018-05-01 13:26:55] Generating plot 36 (scen 36 of type: impacts)
+INFO [2018-05-01 13:26:55]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:55]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:55]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:55]  include_potential_developments_in_offset_calc = TRUE
+INFO [2018-05-01 13:26:55]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:55] Mean number of sites used for:
+INFO [2018-05-01 13:26:55]  offsets = 263
+INFO [2018-05-01 13:26:55]  devs = 50
+INFO [2018-05-01 13:26:55]  sites_lost = 229
+INFO [2018-05-01 13:26:55] writing outputs to csv
+INFO [2018-05-01 13:26:55] _________________________________
+INFO [2018-05-01 13:26:55] Generating plot 37 (scen 37 of type: impacts)
+INFO [2018-05-01 13:26:55]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:55]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:55]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:55]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:55]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:55] Mean number of sites used for:
+INFO [2018-05-01 13:26:55]  offsets = 197
+INFO [2018-05-01 13:26:55]  devs = 50
+INFO [2018-05-01 13:26:55]  sites_lost = 250
+INFO [2018-05-01 13:26:55] writing outputs to csv
+INFO [2018-05-01 13:26:55] _________________________________
+INFO [2018-05-01 13:26:55] Generating plot 38 (scen 38 of type: impacts)
+INFO [2018-05-01 13:26:55]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:55]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:55]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:55]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:55]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:55] Mean number of sites used for:
+INFO [2018-05-01 13:26:55]  offsets = 194
+INFO [2018-05-01 13:26:55]  devs = 50
+INFO [2018-05-01 13:26:56]  sites_lost = 210
+INFO [2018-05-01 13:26:56] writing outputs to csv
+INFO [2018-05-01 13:26:56] _________________________________
+INFO [2018-05-01 13:26:56] Generating plot 39 (scen 39 of type: impacts)
+INFO [2018-05-01 13:26:56]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:56]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:56]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:56]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:56]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:56] Mean number of sites used for:
+INFO [2018-05-01 13:26:56]  offsets = 352
+INFO [2018-05-01 13:26:56]  devs = 50
+INFO [2018-05-01 13:26:56]  sites_lost = 201
+INFO [2018-05-01 13:26:56] writing outputs to csv
+INFO [2018-05-01 13:26:56] _________________________________
+INFO [2018-05-01 13:26:56] Generating plot 40 (scen 40 of type: impacts)
+INFO [2018-05-01 13:26:56]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:56]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:56]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:56]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:56]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:56] Mean number of sites used for:
+INFO [2018-05-01 13:26:56]  offsets = 205
+INFO [2018-05-01 13:26:56]  devs = 50
+INFO [2018-05-01 13:26:56]  sites_lost = 219
+INFO [2018-05-01 13:26:56] writing outputs to csv
+INFO [2018-05-01 13:26:56] _________________________________
+INFO [2018-05-01 13:26:56] Generating plot 41 (scen 41 of type: impacts)
+INFO [2018-05-01 13:26:56]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:56]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:56]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:56]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:56]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:56] Mean number of sites used for:
+INFO [2018-05-01 13:26:56]  offsets = 196
+INFO [2018-05-01 13:26:56]  devs = 50
+INFO [2018-05-01 13:26:56]  sites_lost = 203
+INFO [2018-05-01 13:26:56] writing outputs to csv
+INFO [2018-05-01 13:26:56] _________________________________
+INFO [2018-05-01 13:26:56] Generating plot 42 (scen 42 of type: impacts)
+INFO [2018-05-01 13:26:56]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:56]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:56]  offset_time_horizon = 15
+INFO [2018-05-01 13:26:56]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:56]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:56] Mean number of sites used for:
+INFO [2018-05-01 13:26:56]  offsets = 392
+INFO [2018-05-01 13:26:56]  devs = 50
+INFO [2018-05-01 13:26:56]  sites_lost = 220
+INFO [2018-05-01 13:26:57] writing outputs to csv
+INFO [2018-05-01 13:26:57] _________________________________
+INFO [2018-05-01 13:26:57] Generating plot 43 (scen 43 of type: impacts)
+INFO [2018-05-01 13:26:57]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:57]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:57]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:57]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57] Mean number of sites used for:
+INFO [2018-05-01 13:26:57]  offsets = 102
+INFO [2018-05-01 13:26:57]  devs = 50
+INFO [2018-05-01 13:26:57]  sites_lost = 248
+INFO [2018-05-01 13:26:57] writing outputs to csv
+INFO [2018-05-01 13:26:57] _________________________________
+INFO [2018-05-01 13:26:57] Generating plot 44 (scen 44 of type: impacts)
+INFO [2018-05-01 13:26:57]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:57]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:57]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:57]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57] Mean number of sites used for:
+INFO [2018-05-01 13:26:57]  offsets = 89
+INFO [2018-05-01 13:26:57]  devs = 50
+INFO [2018-05-01 13:26:57]  sites_lost = 219
+INFO [2018-05-01 13:26:57] writing outputs to csv
+INFO [2018-05-01 13:26:57] _________________________________
+INFO [2018-05-01 13:26:57] Generating plot 45 (scen 45 of type: impacts)
+INFO [2018-05-01 13:26:57]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:57]  dev_calc_type = future_condition
+INFO [2018-05-01 13:26:57]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:57]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57] Mean number of sites used for:
+INFO [2018-05-01 13:26:57]  offsets = 227
+INFO [2018-05-01 13:26:57]  devs = 50
+INFO [2018-05-01 13:26:57]  sites_lost = 221
+INFO [2018-05-01 13:26:57] writing outputs to csv
+INFO [2018-05-01 13:26:57] _________________________________
+INFO [2018-05-01 13:26:57] Generating plot 46 (scen 46 of type: impacts)
+INFO [2018-05-01 13:26:57]  offset_action_params = (net_gains, restore)
+INFO [2018-05-01 13:26:57]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:57]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:57]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57] Mean number of sites used for:
+INFO [2018-05-01 13:26:57]  offsets = 110
+INFO [2018-05-01 13:26:57]  devs = 50
+INFO [2018-05-01 13:26:57]  sites_lost = 214
+INFO [2018-05-01 13:26:57] writing outputs to csv
+INFO [2018-05-01 13:26:57] _________________________________
+INFO [2018-05-01 13:26:57] Generating plot 47 (scen 47 of type: impacts)
+INFO [2018-05-01 13:26:57]  offset_action_params = (restoration_gains, restore)
+INFO [2018-05-01 13:26:57]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:57]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:57]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57] Mean number of sites used for:
+INFO [2018-05-01 13:26:57]  offsets = 114
+INFO [2018-05-01 13:26:57]  devs = 50
+INFO [2018-05-01 13:26:57]  sites_lost = 218
+INFO [2018-05-01 13:26:57] writing outputs to csv
+INFO [2018-05-01 13:26:57] _________________________________
+INFO [2018-05-01 13:26:57] Generating plot 48 (scen 48 of type: impacts)
+INFO [2018-05-01 13:26:57]  offset_action_params = (avoided_loss, maintain)
+INFO [2018-05-01 13:26:57]  dev_calc_type = current_condition
+INFO [2018-05-01 13:26:57]  offset_time_horizon = 30
+INFO [2018-05-01 13:26:57]  include_potential_developments_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:57]  include_unregulated_loss_in_offset_calc = FALSE
+INFO [2018-05-01 13:26:58] Mean number of sites used for:
+INFO [2018-05-01 13:26:58]  offsets = 295
+INFO [2018-05-01 13:26:58]  devs = 50
+INFO [2018-05-01 13:26:58]  sites_lost = 200
+INFO [2018-05-01 13:26:58] writing outputs to csv
+INFO [2018-05-01 13:26:58] all done
