@@ -5,16 +5,20 @@ initialise_user_global_params <- function(){
   global_params$scenario_subset = 1
 #  global_params$user_simulated_ecology_params_file = 'scale_paper_params.R'  # path to file
   global_params$number_of_cores = 'all'
+
   
   global_params$simulation_folder = paste0(path.expand('~'), '/offset_data/scale_paper/')
   
   global_params$feature_raster_files = paste0(global_params$simulation_folder, 'simulation_inputs/feature_001.tif')
   global_params$planning_units_raster = paste0(global_params$simulation_folder, 'simulation_inputs/planning_units.tif')
   
-  
+  # what subset of features to use in the simulation
+  global_params$features_to_use_in_simulation = 1
 
   # Where simulation outputs will be written
 
+  global_params$time_steps = 50
+  
   # The number of realizations to run
   global_params$realisation_num = 1
   
@@ -34,7 +38,7 @@ initialise_user_global_params <- function(){
   global_params$overwrite_feature_dynamics = TRUE
   # if a file is supplied set this to false to use values in provided raster layer of condition classes, otherwise set to true for on the fly condition class calculations
   global_params$overwrite_condition_classes = TRUE
-  global_params$overwrite_site_features = TRUE
+  global_params$overwrite_features = TRUE
   
   
   return(global_params)
@@ -42,47 +46,46 @@ initialise_user_global_params <- function(){
 
 
 
-initialise_user_simulation_params <- function(){ 
+initialise_user_simulation_params <- function(time_steps){ 
   
   simulation_params = list()
   
-  # what subset of features to use in the simulation
-  simulation_params$features_to_use_in_simulation = 1
-  
   # The total number of layers to use in the offset calcuation (iterating from the start)
-  simulation_params$features_to_use_in_offset_calc = 1
+  simulation_params$features_to_use_in_offset_calc = list(1)
   
-  simulation_params$features_to_use_in_offset_intervention = 1 
+  simulation_params$features_to_use_in_offset_intervention = list(1) 
   
-  simulation_params$use_offset_metric = FALSE
-  
-  simulation_params$time_steps = 50
+  simulation_params$use_offset_metric = list(FALSE)
   
   # The maximum number of parcels can be selected to offset a single development
   
-  simulation_params$max_offset_parcel_num = 10
+  simulation_params$max_offset_parcel_num = list(10)
+  simulation_params$use_uncoupled_offsets = list(FALSE)
   
-  # Stops the offset from delivering any further gains once it has acheived the gains required
-  simulation_params$limit_offset_restoration = TRUE
+  simulation_params$uncoupled_offset_type = list('credit')
   
-  # The probability per parcel of it being unregulatedly cleared, every parcel gets set to this number - set to zero to turn off
-  simulation_params$unregulated_loss_prob = 0.005
-  
-  # Exclude parcels with less than this number of elements
-  simulation_params$min_site_screen_size = 5
-  
-  # setting (0-1] ignore parcels with size above this number of elements 
-  simulation_params$max_site_screen_size_quantile = 0.99
-  
-  simulation_params$intervention_num = 500
+  simulation_params$uncoupled_offset_selection_type = list('stochastic')
+  simulation_params$development_selection_type = list('stochastic')
   
   # when the interventions are set to take place, in this case force to occur once per year
-  simulation_params$intervention_vec = build_stochastic_intervention(time_steps = simulation_params$time_steps, 
-                                                                     intervention_start = 1, 
-                                                                     intervention_end = simulation_params$time_steps, 
-                                                                     intervention_num = simulation_params$intervention_num, 
-                                                                     sd = 1)
+  simulation_params$development_control = list(build_stochastic_intervention(time_steps = time_steps, 
+                                                                 intervention_start = 1, 
+                                                                 intervention_end = time_steps, 
+                                                                 intervention_num = 500, 
+                                                                 sd = 1))
   
+  # Stops the offset from delivering any further gains once it has acheived the gains required
+  simulation_params$limit_offset_restoration = list(TRUE)
+  
+  # The probability per parcel of it being unregulatedly cleared, every parcel gets set to this number - set to zero to turn off
+  simulation_params$unregulated_loss_prob = list(0.005)
+  
+  # Exclude parcels with less than this number of elements
+  simulation_params$min_site_screen_size = list(5)
+  
+  # setting (0-1] ignore parcels with size above this number of elements 
+  simulation_params$max_site_screen_size_quantile = list(0.99)
+
   simulation_params$offset_action_params = list(c('net_gains', 'restore'), 
                                                 c('restoration_gains', 'restore'), 
                                                 c('avoided_condition_decline', 'maintain'))
@@ -91,21 +94,21 @@ initialise_user_simulation_params <- function(){
   # are: 'current_condition' - losses are calcuated relative to the value of
   # the site at the time of the intervention 
   # 'future_condition' - is the do nothing trjectory of the development site.
-  simulation_params$dev_calc_type = 'future_condition'    #'future_condition', 'current_condition' 
+  simulation_params$dev_calc_type = list('future_condition')    #'future_condition', 'current_condition' 
   
   # Track accumulated credit from previous exchanges (eithger in current or
   # previous time step) and use them to allow developments to proceed if the
   # credit is large enough. FALSE means ignore any exces credit from offset exchanges
-  simulation_params$allow_developments_from_credit = TRUE
+  simulation_params$allow_developments_from_credit = list(TRUE)
   
   # How the development parcels are selected options are 'random' or
   # 'weighted'. Note tha weighted requires an additonal weighting layer. If
   # you are running on your own data you need to specify the weights file in
   # intialise_routines.R  (or put the files in simulation_inputs)
-  simulation_params$development_selection_type = 'random'  
+
   
   # The time horizon in which the offset gains need to equal the devlopment impact
-  simulation_params$offset_time_horizon = 30
+  simulation_params$offset_time_horizon = list(30)
   
   # Include future legal developments in calculating contribution of avoided
   # losses to the impact of the offset. This increases the impact of the
@@ -119,13 +122,13 @@ initialise_user_simulation_params <- function(){
   
   # Include unregulated clearing in the calculating the contribution of avoided
   # losses to the impact of the development. 
-  simulation_params$include_unregulated_loss_in_dev_calc = simulation_params$include_unregulated_loss_in_offset_calc
+  simulation_params$include_unregulated_loss_in_dev_calc = list(simulation_params$include_unregulated_loss_in_offset_calc)
   
-  simulation_params$dev_counterfactual_adjustment = 'as_offset'
+  simulation_params$dev_counterfactual_adjustment = list('as_offset')
   # The development impacts is multiplied by this factor (irrespective of how
   # they were caluclated) and the offset impact then needs to match this
   # multiplied development impact
-  simulation_params$offset_multiplier = 1
+  simulation_params$offset_multiplier = list(1)
   
   
   return(simulation_params)
@@ -184,9 +187,7 @@ initialise_user_feature_params <- function(){
   feature_params$background_dynamics_type = 'site_scale'
   feature_params$management_dynamics_type = 'site_scale'
   feature_params$scale_features = FALSE
-  feature_params$unique_site_vals = TRUE
-  feature_params$unique_site_modes = TRUE
-  
+
   feature_params$site_sample_type = 'trunc_norm'
   
   feature_params$dynamics_sample_type = 'by_initial_value' #'by_initial_value' 
@@ -195,13 +196,11 @@ initialise_user_feature_params <- function(){
   
   feature_params$project_by_mean = TRUE
   
-  feature_params$management_update_dynamics_by_differential = TRUE
-  feature_params$background_update_dynamics_by_differential = TRUE
+  feature_params$update_management_dynamics_by_differential = TRUE
+  feature_params$update_background_dynamics_by_differential = TRUE
   
   feature_params$perform_management_dynamics_time_shift = TRUE
   feature_params$perform_background_dynamics_time_shift = FALSE
-  
-  feature_params$update_offset_dynamics_by_time_shift = TRUE
   
   feature_params$sample_management_dynamics = TRUE
   
@@ -242,8 +241,7 @@ initialise_user_feature_params <- function(){
 initialise_user_output_params <- function(){
   output_params = list()
   output_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
-  output_params$output_plot = TRUE # switch to choose wheteher plots are output
-  output_params$output_csv_file = TRUE #switch to choose whether impacts are exported as csv
+  output_params$output_type = 'plot' #switch to choose whether impacts are exported as csv
   output_params$realisation_num = 'all'; 10 #'all' # 'all'  or number to plot
   output_params$write_pdf = TRUE
   output_params$sets_to_plot = 5 # example site to plot
