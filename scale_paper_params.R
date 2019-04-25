@@ -106,7 +106,6 @@ initialise_user_simulation_params <- function(time_steps){
   # you are running on your own data you need to specify the weights file in
   # intialise_routines.R  (or put the files in simulation_inputs)
 
-  
   # The time horizon in which the offset gains need to equal the devlopment impact
   simulation_params$offset_time_horizon = list(30)
   
@@ -293,14 +292,14 @@ initialise_user_output_params <- function(){
   output_params$ny = 4
 
   
-  output_params$site_outcome_plot_lims_set = rep(list(c(0, 3e4)), length(output_params$scenario_vec))
-  output_params$program_outcome_plot_lims_set = rep(list(c(0e6, 1e7)), length(output_params$scenario_vec))
-  output_params$landscape_outcome_plot_lims_set = rep(list(c(0, 2e7)), length(output_params$scenario_vec))
+  output_params$site_outcome_plot_lims_set = rep(list(list(c(0, 3e4))), length(output_params$scenario_vec))
+  output_params$program_outcome_plot_lims_set = rep(list(list(c(0e6, 1e7))), length(output_params$scenario_vec))
+  output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 2e7))), length(output_params$scenario_vec))
   
 
-  output_params$site_impact_plot_lims_set = rep(list(c(-7e3, 1.1e4)), length(output_params$scenario_vec))
-  output_params$program_impact_plot_lims_set = rep(list(c(-3e5, 3e5)), length(output_params$scenario_vec)) 
-  output_params$landscape_impact_plot_lims_set = rep(list(c(-25e5, 0)), length(output_params$scenario_vec))
+  output_params$site_impact_plot_lims_set = rep(list(list(c(-7e3, 1.1e4))), length(output_params$scenario_vec))
+  output_params$program_impact_plot_lims_set = rep(list(list(c(-3e5, 3e5))), length(output_params$scenario_vec)) 
+  output_params$landscape_impact_plot_lims_set = rep(list(list(c(-25e5, 0))), length(output_params$scenario_vec))
 
   
   
