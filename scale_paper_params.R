@@ -52,7 +52,7 @@ initialise_user_simulation_params <- function(global_params){
   
   simulation_params$features_to_use_in_offset_intervention = list(global_params$features_to_use_in_simulation) 
   
-  simulation_params$use_offset_metric = list(FALSE)
+  simulation_params$use_transform_metric = list(FALSE)
   
   # The maximum number of parcels can be selected to offset a single development
   
@@ -84,8 +84,8 @@ initialise_user_simulation_params <- function(global_params){
   # setting (0-1] ignore parcels with size above this number of elements 
   simulation_params$max_site_screen_size_quantile = list(0.99)
 
-  simulation_params$offset_action_params = list(c('net_gains', 'restore'), 
-                                                c('restoration_gains', 'restore'), 
+  simulation_params$offset_action_params = list(c('net_gains', 'restore'),
+                                                c('restoration_gains', 'restore'),
                                                 c('avoided_condition_decline', 'maintain'))
   
   # This is the equivalent of offset_calc_type for the dev parcel. Options
@@ -204,8 +204,6 @@ initialise_user_feature_params <- function(global_params){
   # Sample the background dynamics from a uniform distribution to they vary per site and per feature
   feature_params$sample_background_dynamics = TRUE
   
-  feature_params$simulated_time_vec = 0:80
-  
   feature_params$condition_class_bounds = rep(list(list(c(0, 0.5, 1))), feature_params$simulated_feature_num)
   
   mean_decline_rate = -0.02
@@ -231,10 +229,35 @@ initialise_user_feature_params <- function(global_params){
                                                                                           feature_params$background_dynamics_bounds[[i]][[j]]$best_estimate[1], 
                                                                                           feature_params$background_dynamics_bounds[[i]][[j]]$upper_bound[1])))
 
-
   return(feature_params)
 }
 
+
+dynamics_characteristics <- function(feature_num, condition_class_bounds){
+  browser()
+  mean_decline_rate = -0.02
+  mean_restoration_rate = 0.04
+  background_logistic_params_set = rep(list(list(list(c(0, mean_decline_rate), c(0.5, mean_decline_rate), c(1, mean_decline_rate)))), feature_num)
+  
+  management_logistic_params_set = rep(list(list(list(c(0.01, 0.04), c(0.01, 0.05), c(0.01, 0.06)))), feature_num)
+  
+  dynamics_characteristics$simulated_time_vec = 0:200
+  
+  dynamics_characteristics$background_dynamics_bounds <- create_dynamics_set(background_logistic_params_set, 
+                                                                   condition_class_bounds,
+                                                                   dynamics_characteristics$simulated_time_vec)
+  
+  dynamics_characteristics$management_dynamics_bounds <- create_dynamics_set(management_logistic_params_set, 
+                                                                   condition_class_bounds,
+                                                                   dynamics_characteristics$simulated_time_vec)
+  
+  dynamics_characteristics$initial_condition_class_bounds = lapply(seq_along(dynamics_characteristics$background_dynamics_bounds), 
+                                                         function(i) lapply(seq_along(dynamics_characteristics$background_dynamics_bounds[[i]]), 
+                                                                            function(j) c(dynamics_characteristics$background_dynamics_bounds[[i]][[j]]$lower_bound[1], 
+                                                                                          dynamics_characteristics$background_dynamics_bounds[[i]][[j]]$best_estimate[1], 
+                                                                                          dynamics_characteristics$background_dynamics_bounds[[i]][[j]]$upper_bound[1])))
+  
+}
 # 
 # initialise_user_output_params <- function(){
 #   output_params = list()
