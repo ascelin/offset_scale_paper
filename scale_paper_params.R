@@ -54,9 +54,9 @@ initialise_user_simulation_params <- function(global_params){
   
   simulation_params$use_transform_metric = list(FALSE)
   
-  # The maximum number of parcels can be selected to offset a single development
+  # The maximum number of sites can be selected to offset a single development
   
-  simulation_params$max_offset_parcel_num = list(10)
+  simulation_params$max_offset_site_num = list(10)
   simulation_params$use_uncoupled_offsets = list(FALSE)
   
   simulation_params$uncoupled_offset_type = list('credit')
@@ -75,20 +75,20 @@ initialise_user_simulation_params <- function(global_params){
   # Stops the offset from delivering any further gains once it has acheived the gains required
   simulation_params$limit_offset_restoration = list(TRUE)
   
-  # The probability per parcel of it being unregulatedly cleared, every parcel gets set to this number - set to zero to turn off
+  # The probability per site of it being unregulatedly cleared, every site gets set to this number - set to zero to turn off
   simulation_params$unregulated_loss_prob = list(0.005)
   
-  # Exclude parcels with less than this number of elements
+  # Exclude sites with less than this number of elements
   simulation_params$min_site_screen_size = list(5)
   
-  # setting (0-1] ignore parcels with size above this number of elements 
+  # setting (0-1] ignore sites with size above this number of elements 
   simulation_params$max_site_screen_size_quantile = list(0.99)
 
   simulation_params$offset_action_params = list(c('net_gains', 'restore'),
                                                 c('restoration_gains', 'restore'),
                                                 c('avoided_condition_decline', 'maintain'))
   
-  # This is the equivalent of offset_calc_type for the dev parcel. Options
+  # This is the equivalent of offset_calc_type for the dev site. Options
   # are: 'current_condition' - losses are calcuated relative to the value of
   # the site at the time of the intervention 
   # 'future_condition' - is the do nothing trjectory of the development site.
@@ -99,7 +99,7 @@ initialise_user_simulation_params <- function(global_params){
   # credit is large enough. FALSE means ignore any exces credit from offset exchanges
   simulation_params$allow_developments_from_credit = list(TRUE)
   
-  # How the development parcels are selected options are 'random' or
+  # How the development sites are selected options are 'random' or
   # 'weighted'. Note tha weighted requires an additonal weighting layer. If
   # you are running on your own data you need to specify the weights file in
   # intialise_routines.R  (or put the files in simulation_inputs)
@@ -139,7 +139,7 @@ create_dynamics_set <- function(logistic_params_set, condition_class_bounds, tim
   dynamics_set = lapply(seq_along(logistic_params_set), 
                         function(i) lapply(seq_along(logistic_params_set[[i]]),
                                            function(j) lapply(seq_along(logistic_params_set[[i]][[j]]),
-                                                              function(k) logistic_projection(parcel_vals = logistic_params_set[[i]][[j]][[k]][1], 
+                                                              function(k) logistic_projection(site_vals = logistic_params_set[[i]][[j]][[k]][1], 
                                                                                               min_eco_val = condition_class_bounds[[i]][[j]][1], 
                                                                                               max_eco_val = condition_class_bounds[[i]][[j]][3], 
                                                                                               current_dec_rate = logistic_params_set[[i]][[j]][[k]][2], 
@@ -152,9 +152,9 @@ create_dynamics_set <- function(logistic_params_set, condition_class_bounds, tim
 }
 
 
-logistic_projection <- function(parcel_vals, min_eco_val, max_eco_val, current_dec_rate, time_vec){
+logistic_projection <- function(site_vals, min_eco_val, max_eco_val, current_dec_rate, time_vec){
   
-  t_sh = -1/current_dec_rate * log( ((parcel_vals - min_eco_val)/(max_eco_val - parcel_vals)))
+  t_sh = -1/current_dec_rate * log( ((site_vals - min_eco_val)/(max_eco_val - site_vals)))
   
   # define logistic curve given logistic parameter set.
   eco_projected = min_eco_val + (max_eco_val - min_eco_val)/(1 + exp(-current_dec_rate*(time_vec - t_sh)))
@@ -173,10 +173,10 @@ initialise_user_feature_params <- function(global_params){
   # Number of pixels in (y, x) for the feature layes 
   feature_params$feature_layer_size = c(500, 500)
   
-  # Numnber of parcels in y (but total size varies)
+  # Numnber of sites in y (but total size varies)
   feature_params$site_num_characteristics = c(50, 50, 5)
   
-  # Numnber of parcels in x (but total size varies)
+  # Numnber of sites in x (but total size varies)
   feature_params$feature_num_characteristics = c(10, 10, 5)
   
   feature_params$occupation_ratio = rep(list(0.2), feature_params$simulated_feature_num) 
@@ -188,7 +188,7 @@ initialise_user_feature_params <- function(global_params){
   feature_params$site_sample_type = 'trunc_norm'
   
   feature_params$dynamics_sample_type = 'by_initial_value' #'by_initial_value' 
-  # Sample the restoration rates from a uniform distribution to they vary per parcel and per feature
+  # Sample the restoration rates from a uniform distribution to they vary per site and per feature
   feature_params$management_dynamics_sample_type = 'by_distribution'
   
   feature_params$project_by_mean = TRUE
@@ -332,7 +332,7 @@ dynamics_characteristics <- function(feature_num, condition_class_bounds){
 
 initialise_user_output_params <- function(global_params){
   output_params = list()
-  output_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
+  output_params$plot_type = 'outcomes' # can be 'outcomes'  or 'impacts',
   output_params$output_type = 'plot' #switch to choose whether impacts are exported as csv
   output_params$realisation_num = 'all';  #'all' # 'all'  or number to plot
   output_params$write_pdf = TRUE
@@ -344,7 +344,7 @@ initialise_user_output_params <- function(global_params){
   output_params$landscape_col = 'black'
   output_params$lwd_vec = c(3, 0.5)
   output_params$print_dev_offset_sites = TRUE
-  
+  output_params$plot_from_impact_yr = FALSE
   # Plot subset of the data. For example:
   # output_params$plot_subset_type = c('offset_time_horizon', 'dev_calc_type' )
   # output_params$plot_subset_param = c('30', 'future_condition')  
@@ -385,9 +385,14 @@ initialise_user_output_params <- function(global_params){
   output_params$ny = 4
   
   
-  output_params$site_outcome_plot_lims_set = rep(list(list(c(0, 3e3))), max(output_params$scenario_vec))
-  output_params$program_outcome_plot_lims_set = rep(list(list(c(0e6, 1e3))), max(output_params$scenario_vec))
-  output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 2e3))), max(output_params$scenario_vec))
+  # output_params$site_outcome_plot_lims_set = rep(list(list(c(0, 3e3))), max(output_params$scenario_vec))
+  # output_params$program_outcome_plot_lims_set = rep(list(list(c(0, 25e3))), max(output_params$scenario_vec))
+  # output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 50e3))), max(output_params$scenario_vec))
+  
+  output_params$site_impact_plot_lims_set = rep(list(rep(list(c(0, 3e3)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
+  output_params$program_impact_plot_lims_set = rep(list(rep(list(c(0, 25e3)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
+  output_params$landscape_impact_plot_lims_set = rep(list(rep(list(cc(0, 50e3)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
+  
   
   
   output_params$site_impact_plot_lims_set = rep(list(rep(list(c(-1e2, 1e2)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
