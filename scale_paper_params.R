@@ -2,7 +2,6 @@ initialise_user_global_params <- function(){
   
   global_params = list()
   
-  global_params$scenario_subset = 1
 #  global_params$user_simulated_ecology_params_file = 'scale_paper_params.R'  # path to file
   global_params$number_of_cores = 1
 
@@ -16,7 +15,7 @@ initialise_user_global_params <- function(){
 
   # Where simulation outputs will be written
 
-  global_params$time_steps = 50
+  global_params$time_steps = 5
   
   # The number of realizations to run
   global_params$realisation_num = 1
@@ -390,7 +389,7 @@ initialise_user_output_params <- function(global_params){
   output_params$realisation_num = 'all';  #'all' # 'all'  or number to plot
   output_params$write_pdf = FALSE
   output_params$sets_to_plot = 1 # example site to plot
-  output_params$scenario_vec = global_params$scenario_subset #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
+  output_params$scenario_vec = 1:3 #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
   output_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
   output_params$program_col_vec = c('darkgreen', 'red', 'black') 
   output_params$cfac_col = 'blue' 
@@ -441,7 +440,7 @@ initialise_user_output_params <- function(global_params){
   # output_params$site_outcome_plot_lims_set = rep(list(list(c(0, 3e3))), max(output_params$scenario_vec))
   # output_params$program_outcome_plot_lims_set = rep(list(list(c(0, 25e3))), max(output_params$scenario_vec))
   # output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 50e3))), max(output_params$scenario_vec))
-  
+
   output_params$site_outcome_plot_lims_set = rep(list(rep(list(c(0, 5e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
   output_params$program_outcome_plot_lims_set = rep(list(rep(list(c(0, 1e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
   output_params$landscape_outcome_plot_lims_set = rep(list(rep(list(c(0, 1e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
