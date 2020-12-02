@@ -384,7 +384,7 @@ dynamics_characteristics <- function(feature_num, condition_class_bounds){
 
 initialise_user_output_params <- function(global_params){
   output_params = list()
-  output_params$plot_type = 'outcomes' # can be 'outcomes'  or 'impacts',
+  output_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
   output_params$output_type = 'plot' #switch to choose whether impacts are exported as csv
   output_params$realisation_num = 'all';  #'all' # 'all'  or number to plot
   output_params$write_pdf = FALSE
@@ -446,8 +446,8 @@ initialise_user_output_params <- function(global_params){
   output_params$landscape_outcome_plot_lims_set = rep(list(rep(list(c(0, 1e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
 
   output_params$site_impact_plot_lims_set = rep(list(rep(list(c(-1e1, 1e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
-  output_params$program_impact_plot_lims_set = rep(list(rep(list(c(-1e3, 1e3)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
-  output_params$landscape_impact_plot_lims_set = rep(list(rep(list(c(-1e3, 1e3)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
+  output_params$program_impact_plot_lims_set = rep(list(rep(list(c(-1e4, 1e4)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
+  output_params$landscape_impact_plot_lims_set = rep(list(rep(list(c(-1e4, 1e4)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
   
   
   
