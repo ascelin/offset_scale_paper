@@ -50,11 +50,10 @@ initialise_user_simulation_params <- function(global_params){
   
   simulation_params = list()
   
-  # simulation_params$offset_action_params = list(c('net_gains', 'restore'),
-  #                                               c('restoration_gains', 'restore'),
-  #                                               c('avoided_condition_decline', 'maintain'))
-  
-  simulation_params$offset_calc_type = list('avoided_condition_decline')
+  simulation_params$offset_calc_type = list(c('net_gains'),
+                                                c('restoration_gains'),
+                                                c('avoided_condition_decline'))
+
   # This is the equivalent of offset_calc_type for the dev site. Options
   # are: 'current_condition' - losses are calcuated relative to the value of
   # the site at the time of the intervention 
