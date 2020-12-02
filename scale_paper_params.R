@@ -15,7 +15,7 @@ initialise_user_global_params <- function(){
 
   # Where simulation outputs will be written
 
-  global_params$time_steps = 5
+  global_params$time_steps = 50
   
   # The number of realizations to run
   global_params$realisation_num = 1
@@ -190,13 +190,13 @@ initialise_user_feature_params <- function(global_params, simulation_params){
   feature_params$simulated_feature_num = length(global_params$features_to_use_in_simulation)
   
   # Number of pixels in (y, x) for the feature layes 
-  feature_params$feature_layer_size = c(500, 500)
+  feature_params$feature_layer_size = c(1000, 1000)
   
   # Numnber of sites in y (but total size varies)
-  feature_params$site_num_characteristics = c(50, 50, 5)
+  feature_params$site_num_characteristics = c(100, 100, 5)
   
   # Numnber of sites in x (but total size varies)
-  feature_params$feature_num_characteristics = c(25, 25, 5)
+  feature_params$feature_num_characteristics = c(50, 50, 10)
   
   feature_params$occupation_ratio = rep(list(0.2), feature_params$simulated_feature_num) 
   
