@@ -12,18 +12,16 @@ initialise_user_global_params <- function(){
   global_params$planning_units_raster = 'default' #paste0(global_params$simulation_folder, 'simulation_inputs/planning_units.tif')
   
   # a vector composed of what features to use in the simulation e.g. first 3 features is 1:3 NOT 3
-  global_params$features_to_use_in_simulation = 1:2
+  global_params$features_to_use_in_simulation = 1
 
   # Where simulation outputs will be written
 
   global_params$time_steps = 50
   
   # The number of realizations to run
-  global_params$realisation_num = 2
+  global_params$realisation_num = 1
   
-  # NOTE - set this to TRUE for initial simulation (when running with simulated data) - 
-  # setting to false on subsequent runs will skip data builds and hence speed up simulations
-  global_params$build_simulated_feature_layers = TRUE
+
   
   # if a file is supplied set this to false to use values in provided list of probabilities, otherwise set to true for equal probability of site development 
   global_params$overwrite_dev_probability_list = FALSE
@@ -31,6 +29,9 @@ initialise_user_global_params <- function(){
   # if a file is supplied set this to false to use values in provided list of probabilities, otherwise set to true for equal probability of site offset 
   global_params$overwrite_offset_probability_list = FALSE
   
+  # NOTE - set this to TRUE for initial simulation (when running with simulated data) - 
+  # setting to false on subsequent runs will skip data builds and hence speed up simulations
+  global_params$build_simulated_feature_layers = TRUE
   # if a file is supplied set this to false to use values in provided list of dynamics, otherwise set to true for on the fly dynamics calculations
   global_params$overwrite_management_dynamics = TRUE
   # if a file is supplied set this to false to use values in provided list of dynamics, otherwise set to true for on the fly dynamics calculations
@@ -48,6 +49,18 @@ initialise_user_global_params <- function(){
 initialise_user_simulation_params <- function(global_params){ 
   
   simulation_params = list()
+  
+  # simulation_params$offset_action_params = list(c('net_gains', 'restore'),
+  #                                               c('restoration_gains', 'restore'),
+  #                                               c('avoided_condition_decline', 'maintain'))
+  
+  simulation_params$offset_calc_type = list('net_gains')
+  # This is the equivalent of offset_calc_type for the dev site. Options
+  # are: 'current_condition' - losses are calcuated relative to the value of
+  # the site at the time of the intervention 
+  # 'future_condition' - is the do nothing trjectory of the development site.
+  simulation_params$dev_calc_type = list('future_condition')    #'future_condition', 'current_condition' 
+  
   
   # The total number of layers to use in the offset calcuation (iterating from the start)
   simulation_params$features_to_use_in_offset_calc = list(global_params$features_to_use_in_simulation)
@@ -88,17 +101,7 @@ initialise_user_simulation_params <- function(global_params){
   # setting (0-1] ignore sites with size above this number of elements 
   simulation_params$max_site_screen_size_quantile = list(0.99)
 # 
-  # simulation_params$offset_action_params = list(c('net_gains', 'restore'),
-  #                                               c('restoration_gains', 'restore'),
-  #                                               c('avoided_condition_decline', 'maintain'))
-  
-  simulation_params$offset_calc_type = list('restoration_gains')
-  # This is the equivalent of offset_calc_type for the dev site. Options
-  # are: 'current_condition' - losses are calcuated relative to the value of
-  # the site at the time of the intervention 
-  # 'future_condition' - is the do nothing trjectory of the development site.
-  simulation_params$dev_calc_type = list('future_condition')    #'future_condition', 'current_condition' 
-  
+ 
   # Track accumulated credit from previous exchanges (eithger in current or
   # previous time step) and use them to allow developments to proceed if the
   # credit is large enough. FALSE means ignore any exces credit from offset exchanges
@@ -189,10 +192,10 @@ initialise_user_feature_params <- function(global_params, simulation_params){
   feature_params$simulated_feature_num = length(global_params$features_to_use_in_simulation)
   
   # Number of pixels in (y, x) for the feature layes 
-  feature_params$feature_layer_size = c(250, 250)
+  feature_params$feature_layer_size = c(500, 500)
   
   # Numnber of sites in y (but total size varies)
-  feature_params$site_num_characteristics = c(100, 100, 5)
+  feature_params$site_num_characteristics = c(50, 50, 5)
   
   # Numnber of sites in x (but total size varies)
   feature_params$feature_num_characteristics = c(25, 25, 5)
@@ -438,9 +441,9 @@ initialise_user_output_params <- function(global_params){
   # output_params$program_outcome_plot_lims_set = rep(list(list(c(0, 25e3))), max(output_params$scenario_vec))
   # output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 50e3))), max(output_params$scenario_vec))
   
-  output_params$site_outcome_plot_lims_set = rep(list(rep(list(c(0, 1e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
-  output_params$program_outcome_plot_lims_set = rep(list(rep(list(c(0, 5e3)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
-  output_params$landscape_outcome_plot_lims_set = rep(list(rep(list(c(0, 1e4)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
+  output_params$site_outcome_plot_lims_set = rep(list(rep(list(c(0, 5e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
+  output_params$program_outcome_plot_lims_set = rep(list(rep(list(c(0, 1e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
+  output_params$landscape_outcome_plot_lims_set = rep(list(rep(list(c(0, 1e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
 
   output_params$site_impact_plot_lims_set = rep(list(rep(list(c(-1e1, 1e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
   output_params$program_impact_plot_lims_set = rep(list(rep(list(c(-1e3, 1e3)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
