@@ -190,13 +190,13 @@ initialise_user_feature_params <- function(global_params, simulation_params){
   feature_params$simulated_feature_num = length(global_params$features_to_use_in_simulation)
   
   # Number of pixels in (y, x) for the feature layes 
-  feature_params$feature_layer_size = c(1000, 1000)
+  feature_params$feature_layer_size = c(500, 500)
   
   # Numnber of sites in y (but total size varies)
-  feature_params$site_num_characteristics = c(100, 100, 5)
+  feature_params$site_num_characteristics = c(50, 50, 5)
   
   # Numnber of sites in x (but total size varies)
-  feature_params$feature_num_characteristics = c(50, 50, 10)
+  feature_params$feature_num_characteristics = c(30, 30, 10)
   
   feature_params$occupation_ratio = rep(list(0.2), feature_params$simulated_feature_num) 
   
@@ -256,9 +256,15 @@ initialise_user_feature_params <- function(global_params, simulation_params){
   #                                              upper_bound = rep(0.01, feature_params$simulated_feature_num), 
   #                                              upper_logistic_rate = rep(0.06, feature_params$simulated_feature_num))
   
-  background_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0, decline_rate), mean = c(0.5, decline_rate), upper_bound = c(1, decline_rate)))), feature_params$simulated_feature_num)
+  background_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0, decline_rate), 
+                                                            mean = c(0.5, decline_rate), 
+                                                            upper_bound = c(1, decline_rate)))), 
+                                       feature_params$simulated_feature_num)
   
-  management_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0.01, 0.04), mean = c(0.01, 0.05), upper_bound = c(0.01, 0.06)))), feature_params$simulated_feature_num)  
+  management_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0.01, 0.04),
+                                                            mean = c(0.01, 0.05), 
+                                                            upper_bound = c(0.01, 0.06)))), 
+                                       feature_params$simulated_feature_num)  
   
   # if(simulation_params$offset_calc_type == 'avoided_condition_decline') {
   #   management_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0, 0.04), mean = c(0, 0.05), upper_bound = c(0, 0.06)))), feature_params$simulated_feature_num)
