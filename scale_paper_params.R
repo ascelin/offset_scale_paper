@@ -71,7 +71,7 @@ initialise_user_simulation_params <- function(global_params){
   
   # The maximum number of sites can be selected to offset a single development
   
-  #simulation_params$max_offset_site_num = list(10)
+  simulation_params$max_offset_site_num = list(20)
   simulation_params$use_uncoupled_offsets = list(FALSE)
   
   simulation_params$uncoupled_offset_type = list('credit')
@@ -183,98 +183,67 @@ logistic_projection <- function(site_vals, x_min, x_max, current_dec_rate, time_
 
 
 initialise_user_feature_params <- function(global_params, simulation_params){
-  
+   
   feature_params = list()
-  
-  #how many feature layers to generate
+ 
+  # How many feature layers to generate
   feature_params$simulated_feature_num = length(global_params$features_to_use_in_simulation)
   
-  # Number of pixels in (y, x) for the feature layes 
-  feature_params$feature_layer_size = c(500, 500)
+  # The number of pixels in (y, x) for the feature layers 
+  feature_params$feature_layer_size = c(1000, 1000)
   
-  # Numnber of sites in y (but total size varies)
-  feature_params$site_num_characteristics = c(50, 50, 5)
+  # Numnber of rectangiular sites for a given feature in x, y (but total size varies), third param is control the standard deviation for the sampling. 
+  # If zero all sites the same size, greater values mean greater variation in sizes of the sites.
+  feature_params$site_num_characteristics = c(100, 100, 5)
   
-  # Numnber of sites in x (but total size varies)
+  # Numnber of features in x, y (but total size varies), third param is controld the sd deviation for the sampling. 
+  # if zero all features the same size
   feature_params$feature_num_characteristics = c(30, 30, 10)
   
-  feature_params$occupation_ratio = rep(list(0.2), feature_params$simulated_feature_num) 
+  # Specifies the proprotion of rectangular sites that are retained in the landscape for that feature. 
+  # As sites are randomly removed, it them means there is more variation in terms of how much each given 
+  # feature overlaps a land parcel. The more you crank up this value the more similar the sites become in value.
+  feature_params$occupation_ratio = rep(list(0.3), feature_params$simulated_feature_num) 
   
-  feature_params$background_dynamics_type = 'site_scale'
-  feature_params$management_dynamics_type = 'site_scale'
-  #feature_params$scale_features = FALSE
-
-  feature_params$site_sample_type = 'trunc_norm'
-  
-  feature_params$dynamics_sample_type = 'by_initial_value' #'by_initial_value' 
-  # Sample the restoration rates from a uniform distribution to they vary per site and per feature
-  feature_params$management_dynamics_sample_type = 'by_distribution'
-  
-  feature_params$project_by_mean = TRUE
-  
-  feature_params$update_management_dynamics_by_differential = TRUE
-  feature_params$update_background_dynamics_by_differential = TRUE
-  
-  feature_params$perform_management_dynamics_time_shift = TRUE
-  feature_params$perform_background_dynamics_time_shift = FALSE
-  
-  feature_params$sample_management_dynamics = TRUE
-  
-  # Sample the background dynamics from a uniform distribution to they vary per site and per feature
-  feature_params$sample_background_dynamics = TRUE
+  # Creates a list of data frams per feature that describe the condition class charateristics per feature.
+  # For this analysis we just have one feature and one condition class. 
   feature_params$condition_class_bounds = vector('list', feature_params$simulated_feature_num)
   
+  # Sets the bounds for the condition classes. For this analyis swe have single condition class with the bounds zero to one 
   for (feature_ind in seq(feature_params$simulated_feature_num)){
     feature_params$condition_class_bounds[[feature_ind]] = data.frame(feature = feature_ind, condition_class = 1, lower_bound = c(0), upper_bound = c(1))
   }
-  
   feature_params$management_condition_class_bounds = feature_params$condition_class_bounds
   
+  # Decline reate to use in the logistic condition curve
   decline_rate = -0.02
-
-  # feature_params$condition_class_bounds = data.frame(feature = seq(feature_params$simulated_feature_num),
-  #                                                    condition_class = rep(1, feature_params$simulated_feature_num),
-  #                                                    lower_bound = rep(0, feature_params$simulated_feature_num),
-  #                                                    mean = rep(0.5, feature_params$simulated_feature_num),
-  #                                                    upper_bound = rep(1, feature_params$simulated_feature_num))
   
-  # background_logistic_params_set  = data.frame(feature = seq(feature_params$simulated_feature_num),
-  #                                              condition_class = rep(1, feature_params$simulated_feature_num),
-  #                                              median_bound = rep(0, feature_params$simulated_feature_num), 
-  #                                              lower_logistic_rate = rep(decline_rate, feature_params$simulated_feature_num), 
-  #                                              mean = rep(0.5, feature_params$simulated_feature_num), 
-  #                                              mean_logistic_rate = rep(decline_rate, feature_params$simulated_feature_num), 
-  #                                              upper_bound = rep(1, feature_params$simulated_feature_num), 
-  #                                              upper_logistic_rate = rep(decline_rate, feature_params$simulated_feature_num))
-  # 
-  # management_logistic_params_set  = data.frame(feature = seq(feature_params$simulated_feature_num),
-  #                                              condition_class = rep(1, feature_params$simulated_feature_num),
-  #                                              lower_bound = rep(0.01, feature_params$simulated_feature_num), 
-  #                                              lower_logistic_rate = rep(0.04, feature_params$simulated_feature_num), 
-  #                                              median_bound = rep(0.01, feature_params$simulated_feature_num), 
-  #                                              mean_logistic_rate = rep(0.05, feature_params$simulated_feature_num), 
-  #                                              upper_bound = rep(0.01, feature_params$simulated_feature_num), 
-  #                                              upper_logistic_rate = rep(0.06, feature_params$simulated_feature_num))
-  
+  # Per feature per condition class decline rates for unmanaged vegetation. 
+  # This analysis is only using one feature and one conditoin class.
+  # The lower bound means constant zero. Upper bound is constant 1. 
+  # If don't have lower/upper 0/1 the for example, if you set lower bound to 0.3, ever cell with condition value 
+  # less than that 0.3 will have the same decline values. 
+  # Don't change lower and upper zero and 1.
   background_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0, decline_rate), 
                                                             mean = c(0.5, decline_rate), 
                                                             upper_bound = c(1, decline_rate)))), 
                                        feature_params$simulated_feature_num)
   
+  # Build 3 logistic curves and using the two params to improvement due to management. 
+  # The first param is starting value, the 2nd param is the shape variable which determines the improvement rate 
+  # Just change the rates here, don't change starting value, if make too small value takes ages to reach higher values
+  # Incease values of the second param to increase restoration rate. Make 2nd param of the lower and upper bound bigger to make more variation.
   management_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0.01, 0.04),
                                                             mean = c(0.01, 0.05), 
                                                             upper_bound = c(0.01, 0.06)))), 
                                        feature_params$simulated_feature_num)  
   
-  # if(simulation_params$offset_calc_type == 'avoided_condition_decline') {
-  #   management_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0, 0.04), mean = c(0, 0.05), upper_bound = c(0, 0.06)))), feature_params$simulated_feature_num)
-  # } else {
-  #   management_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0.01, 0.04), mean = c(0.01, 0.05), upper_bound = c(0.01, 0.06)))), feature_params$simulated_feature_num)  
-  # }
-  # 
-  # 
+  # Length of dynamics curves use to model logistic change.
   feature_params$dynamics_time = 0:200
   
+  # This functions builds the logistic curves for background the and management dynamics. 
+  # Can put a browser() in here and see the curves.
+  # This returns a dataframe, if you want you can replace with with your own csv file to have bespoke curves.
   feature_params$background_dynamics_bounds <- build_logistic_dynamics_set(background_logistic_params_set, 
                                                                            feature_params$condition_class_bounds,
                                                                            feature_params$dynamics_time)
@@ -283,10 +252,7 @@ initialise_user_feature_params <- function(global_params, simulation_params){
                                                                            feature_params$condition_class_bounds,
                                                                            feature_params$dynamics_time)
   
-  # feature_params$initial_condition_class_bounds = lapply(seq_along(feature_params$background_dynamics_bounds), 
-  #                                                        function(i) lapply(seq_along(feature_params$background_dynamics_bounds[[i]]), 
-  #                                                                           function(j) feature_params$background_dynamics_bounds[[i]][[j]][1, ]))
-
+  
   return(feature_params)
 }
 
@@ -390,12 +356,12 @@ dynamics_characteristics <- function(feature_num, condition_class_bounds){
 
 initialise_user_output_params <- function(global_params){
   output_params = list()
-  output_params$plot_type = 'impacts' # can be 'outcomes'  or 'impacts',
+  output_params$plot_type = 'outcomes' # can be 'outcomes'  or 'impacts',
   output_params$output_type = 'plot' #switch to choose whether impacts are exported as csv
   output_params$realisation_num = 'all';  #'all' # 'all'  or number to plot
   output_params$write_pdf = FALSE
-  output_params$sets_to_plot = 1 # example site to plot
-  output_params$scenario_vec = 1:3 #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
+  output_params$sets_to_plot = 6 # example site to plot
+  output_params$scenario_vec = 3 #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
   output_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
   output_params$program_col_vec = c('darkgreen', 'red', 'black') 
   output_params$cfac_col = 'blue' 
@@ -447,9 +413,9 @@ initialise_user_output_params <- function(global_params){
   # output_params$program_outcome_plot_lims_set = rep(list(list(c(0, 25e3))), max(output_params$scenario_vec))
   # output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 50e3))), max(output_params$scenario_vec))
 
-  output_params$site_outcome_plot_lims_set = rep(list(rep(list(c(0, 5e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
-  output_params$program_outcome_plot_lims_set = rep(list(rep(list(c(0, 1e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
-  output_params$landscape_outcome_plot_lims_set = rep(list(rep(list(c(0, 1e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
+  output_params$site_outcome_plot_lims_set = rep(list(rep(list(c(0, 10e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
+  output_params$program_outcome_plot_lims_set = rep(list(rep(list(c(0, 0.3e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
+  output_params$landscape_outcome_plot_lims_set = rep(list(rep(list(c(0.1e5, 0.3e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
 
   output_params$site_impact_plot_lims_set = rep(list(rep(list(c(-1e1, 1e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
   output_params$program_impact_plot_lims_set = rep(list(rep(list(c(-1e4, 1e4)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
