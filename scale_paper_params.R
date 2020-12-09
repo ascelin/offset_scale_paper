@@ -72,6 +72,7 @@ initialise_user_simulation_params <- function(global_params){
   # The maximum number of sites can be selected to offset a single development
   
   #simulation_params$max_offset_site_num = list(10)
+  
   simulation_params$use_uncoupled_offsets = list(FALSE)
   
   simulation_params$uncoupled_offset_type = list('credit')
@@ -216,7 +217,6 @@ initialise_user_feature_params <- function(global_params, simulation_params){
   feature_params$update_background_dynamics_by_differential = TRUE
   
   feature_params$perform_management_dynamics_time_shift = TRUE
-  feature_params$perform_background_dynamics_time_shift = FALSE
   
   feature_params$sample_management_dynamics = TRUE
   
