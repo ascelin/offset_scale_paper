@@ -15,7 +15,7 @@ initialise_user_global_params <- function(){
 
   # Where simulation outputs will be written
 
-  global_params$time_steps = 50
+  global_params$time_steps = 20
   
   # The number of realizations to run
   global_params$realisation_num = 1
