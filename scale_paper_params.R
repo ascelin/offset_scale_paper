@@ -218,7 +218,7 @@ initialise_user_feature_params <- function(global_params, simulation_params){
   feature_params$management_condition_class_bounds = feature_params$condition_class_bounds
   
   # Decline reate to use in the logistic condition curve
-  decline_rate = -0.02
+  feature_params$decline_rate = -0.02
   
   # Per feature per condition class decline rates for unmanaged vegetation. 
   # This analysis is only using one feature and one conditoin class.
@@ -226,9 +226,9 @@ initialise_user_feature_params <- function(global_params, simulation_params){
   # If don't have lower/upper 0/1 the for example, if you set lower bound to 0.3, ever cell with condition value 
   # less than that 0.3 will have the same decline values. 
   # Don't change lower and upper zero and 1.
-  background_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0, decline_rate), 
-                                                            mean = c(0.5, decline_rate), 
-                                                            upper_bound = c(1, decline_rate)))), 
+  background_logistic_params_set = rep(list(list(data.frame(lower_bound = c(0, feature_params$decline_rate), 
+                                                            mean = c(0.5, feature_params$decline_rate), 
+                                                            upper_bound = c(1, feature_params$decline_rate)))), 
                                        feature_params$simulated_feature_num)
   
   # Build 3 logistic curves and using the two params to improvement due to management. 
