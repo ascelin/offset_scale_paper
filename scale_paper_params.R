@@ -292,7 +292,7 @@ dynamics_characteristics <- function(feature_num, condition_class_bounds){
 #   output_params$realisation_num = 'all'; 10 #'all' # 'all'  or number to plot
 #   output_params$write_pdf = TRUE
 #   output_params$sets_to_plot = 5 # example site to plot
-#   output_params$scenario_vec = 'all' #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
+#   output_params$variants_to_output = 'all' #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
 #   output_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
 #   output_params$program_col_vec = c('darkgreen', 'red', 'black') 
 #   output_params$cfac_col = 'blue' 
@@ -340,14 +340,14 @@ dynamics_characteristics <- function(feature_num, condition_class_bounds){
 #   output_params$ny = 4
 # 
 #   
-#   output_params$site_outcome_plot_lims_set = rep(list(list(c(0, 3e4))), length(output_params$scenario_vec))
-#   output_params$program_outcome_plot_lims_set = rep(list(list(c(0e6, 1e7))), length(output_params$scenario_vec))
-#   output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 2e7))), length(output_params$scenario_vec))
+#   output_params$site_outcome_plot_lims_set = rep(list(list(c(0, 3e4))), length(output_params$variants_to_output))
+#   output_params$program_outcome_plot_lims_set = rep(list(list(c(0e6, 1e7))), length(output_params$variants_to_output))
+#   output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 2e7))), length(output_params$variants_to_output))
 #   
 # 
-#   output_params$site_impact_plot_lims_set = rep(list(list(c(-7e3, 1.1e4))), length(output_params$scenario_vec))
-#   output_params$program_impact_plot_lims_set = rep(list(list(c(-3e5, 3e5))), length(output_params$scenario_vec)) 
-#   output_params$landscape_impact_plot_lims_set = rep(list(list(c(-25e5, 0))), length(output_params$scenario_vec))
+#   output_params$site_impact_plot_lims_set = rep(list(list(c(-7e3, 1.1e4))), length(output_params$variants_to_output))
+#   output_params$program_impact_plot_lims_set = rep(list(list(c(-3e5, 3e5))), length(output_params$variants_to_output)) 
+#   output_params$landscape_impact_plot_lims_set = rep(list(list(c(-25e5, 0))), length(output_params$variants_to_output))
 # 
 #   
 #   
@@ -356,14 +356,14 @@ dynamics_characteristics <- function(feature_num, condition_class_bounds){
 # }
 
 
-initialise_user_output_params <- function(global_params){
+initialise_user_output_params <- function(global_params, variants_to_output){
   output_params = list()
   output_params$plot_type = 'outcomes' # can be 'outcomes'  or 'impacts',
   output_params$output_type = 'plot' #switch to choose whether impacts are exported as csv
   output_params$realisation_num = 'all';  #'all' # 'all'  or number to plot
   output_params$write_pdf = FALSE
   output_params$sets_to_plot = 6 # example site to plot
-  output_params$scenario_vec = 3 #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
+  output_params$variants_to_output = variants_to_output #19 #c(1,4,7,10, 8, 2,3,5,6,9,11,12 ) #1:12
   output_params$site_impact_col_vec = c('darkgreen', 'red', 'black')
   output_params$program_col_vec = c('darkgreen', 'red', 'black') 
   output_params$cfac_col = 'blue' 
@@ -383,7 +383,7 @@ initialise_user_output_params <- function(global_params){
   
   
   # The conditions to apply to the to plots
-  my_subset_conditions <- matrix( ncol=2, byrow=TRUE, c(
+  subset_conditions <- matrix( ncol=2, byrow=TRUE, c(
     
     'offset_time_horizon',                             '15',
     'dev_calc_type',                                   'future_condition' # current_condition, future_condition
@@ -397,8 +397,8 @@ initialise_user_output_params <- function(global_params){
   #output_params$plot_subset_type = 'all' #c('offset_action_type') # 'offset_calc_type', 'offset_action_type', offset_time_horizon'
   #output_params$plot_subset_param = 'all' #c('maintain') # 'net_gains', 'restore', 15
   
-  #output_params$plot_subset_type = my_subset_conditions[,1]
-  #output_params$plot_subset_param = my_subset_conditions[,2]
+  #output_params$plot_subset_type = subset_conditions[,1]
+  #output_params$plot_subset_param = subset_conditions[,2]
   
   output_params$site_impact_lwd = 0.5
   output_params$site_outcome_lwd_vec = c(0.5)
@@ -411,17 +411,17 @@ initialise_user_output_params <- function(global_params){
   output_params$ny = 4
   
   
-  # output_params$site_outcome_plot_lims_set = rep(list(list(c(0, 3e3))), max(output_params$scenario_vec))
-  # output_params$program_outcome_plot_lims_set = rep(list(list(c(0, 25e3))), max(output_params$scenario_vec))
-  # output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 50e3))), max(output_params$scenario_vec))
+  # output_params$site_outcome_plot_lims_set = rep(list(list(c(0, 3e3))), max(output_params$variants_to_output))
+  # output_params$program_outcome_plot_lims_set = rep(list(list(c(0, 25e3))), max(output_params$variants_to_output))
+  # output_params$landscape_outcome_plot_lims_set = rep(list(list(c(0, 50e3))), max(output_params$variants_to_output))
 
-  output_params$site_outcome_plot_lims_set = rep(list(rep(list(c(0, 10e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
-  output_params$program_outcome_plot_lims_set = rep(list(rep(list(c(0, 0.3e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
-  output_params$landscape_outcome_plot_lims_set = rep(list(rep(list(c(0.1e5, 0.3e5)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
+  output_params$site_outcome_plot_lims_set = rep(list(rep(list(c(0, 10e1)), max(global_params$features_to_use_in_simulation))), max(output_params$variants_to_output))
+  output_params$program_outcome_plot_lims_set = rep(list(rep(list(c(0, 0.3e5)), max(global_params$features_to_use_in_simulation))), max(output_params$variants_to_output)) 
+  output_params$landscape_outcome_plot_lims_set = rep(list(rep(list(c(0.1e5, 0.3e5)), max(global_params$features_to_use_in_simulation))), max(output_params$variants_to_output))
 
-  output_params$site_impact_plot_lims_set = rep(list(rep(list(c(-1e1, 1e1)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
-  output_params$program_impact_plot_lims_set = rep(list(rep(list(c(-1e4, 1e4)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec)) 
-  output_params$landscape_impact_plot_lims_set = rep(list(rep(list(c(-1e4, 1e4)), max(global_params$features_to_use_in_simulation))), max(output_params$scenario_vec))
+  output_params$site_impact_plot_lims_set = rep(list(rep(list(c(-1e1, 1e1)), max(global_params$features_to_use_in_simulation))), max(output_params$variants_to_output))
+  output_params$program_impact_plot_lims_set = rep(list(rep(list(c(-1e4, 1e4)), max(global_params$features_to_use_in_simulation))), max(output_params$variants_to_output)) 
+  output_params$landscape_impact_plot_lims_set = rep(list(rep(list(c(-1e4, 1e4)), max(global_params$features_to_use_in_simulation))), max(output_params$variants_to_output))
   
   
   
